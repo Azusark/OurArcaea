@@ -1,7 +1,41 @@
 .font1 {
-	width: 100%;
-	height: 600px;
-	background: #58a;
-	clip-path: polygon(0 50px, 50px 0, 100% 0, 100% 100%, 0 100%);
-	z-index: 0;
+	position: absolute;
+	width: 80%;
+	height: 100%;
+	background: #581a;
+	clip-path: polygon(0 150px, 250px 0, 400px 800px, 100% 100%, 0 100%);
+	top :0%;
+	left: 0%;
+}
+.text_zindex {
+	position: absolute;
+	z-index: 1;
+	color:azure;
+}
+.font2{
+	position: absolute;
+	width: 0px;height: 0px;
+	border-top: 600px solid  #581a;
+	border-left: 100px solid transparent;
+	border-right: 100px solid transparent;
+	border-bottom: 50px solid transparent;
+	left: 280px;
+	top :0%;
+}
+.font3{
+	border-radius: 50%;
+	width: 10px;
+	height: 10px;
+	background-color: azure;
+	position: relative;
+	top: 150px;
+	left: 50px;
+}
+.font4{
+	position: relative;
+	top: 140px;
+	left: 70px;
+	width: 180px;
+	height: 5px;
+	background: azure;
 }

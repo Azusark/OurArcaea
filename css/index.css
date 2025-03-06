@@ -13,12 +13,14 @@
 	padding: 15px 32px;
 	border-radius: 10%;
 }
-.myfont{
-	position: fixed;
-	top: 0;
-	width: 400px;
-	height: 100%;
-	box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-	transition: transform 0.3s ease;
-	z-index: 1000; /* 确保在最顶层 */
+.myfont {
+    position: fixed;
+    top: 0;
+    left: 0; 
+    width: 0;
+    height: 100%;
+    overflow: hidden; /* 防止内容溢出 */
+    box-shadow: -2px 0 5px rgba(0,0,0,0.2);
+    transition: width 0.5s ease; /* 修正过渡属性 */
+    z-index: 100;
 }
