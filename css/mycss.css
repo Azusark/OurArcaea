@@ -5,3 +5,12 @@
 	height: 100px;
 	background-color: green;
 }
+.myButton{
+	/* 青绿色按钮 */
+	background-color: #4CAF50;
+	border: none;
+	color: white;
+	padding: 15px 32px;
+	border-radius: 10%;
+
+}
