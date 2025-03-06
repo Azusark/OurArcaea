@@ -24,3 +24,10 @@
     transition: width 0.5s ease; /* 修正过渡属性 */
     z-index: 100;
 }
+.custom-btn {          
+	cursor: pointer;     /* 鼠标悬停时显示手型指针（提示可点击） */
+	transition: fill 0.3s; /* 设置填充颜色（fill属性）的变化过渡效果，持续0.3秒 */
+  }
+.custom-btn:hover {    /* 当鼠标悬停在按钮上时触发的样式 */
+	fill: rgba(120, 46, 160, 0.667);       /* 将填充颜色变为深蓝色（#2980b9） */
+  }
