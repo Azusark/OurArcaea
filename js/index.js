@@ -15,5 +15,11 @@ function loadSidebar() {
             sidebarContainer.innerHTML = '侧栏加载失败';
         });
 }
-	// 绑定按钮点击事件
-	document.getElementById('openBtn').addEventListener('click', loadSidebar);
+//点击ESC关闭侧栏
+document.addEventListener('keydown', function(event) {
+    if (event.key == "Escape") {
+        document.getElementById('myRigister').style.width = "0";
+    }
+});
+// 绑定按钮点击事件
+document.getElementById('openBtn').addEventListener('click', loadSidebar);
