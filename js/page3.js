@@ -8,6 +8,6 @@ container.addEventListener('click', () => {
 
   // 动画结束后移除动画类，以便再次触发
   image.addEventListener('animationend', () => {
-    image.classList.remove('animate');
+    
   }, { once: true });
 });
