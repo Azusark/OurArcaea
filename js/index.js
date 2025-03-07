@@ -24,6 +24,8 @@ function loadLogin() {
             myLogin.innerHTML = html;
             setTimeout(() => {
                 myLogin.style.width = "1000px";
+                const event = new Event('loginLoaded');
+                document.dispatchEvent(event);
             }, 10);
         })
         .catch(error => {
