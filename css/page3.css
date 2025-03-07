@@ -4,12 +4,36 @@
   height: 100vh;
   overflow: hidden;
   position: relative;
+  cursor: pointer; /* 鼠标点击触发 */
+}
+
+body, html {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
 }
 
 /* 图片样式 */
 .scroll-image {
   width: 100%;
   height: auto;
-  position: absolute;
-  top: 0;
+  position: relative; /* 将position改为relative，使其相对于容器定位 */
+  top: auto; /* 移除top属性 */
+  transition: none; /* 移除transition属性以防止滚动效果 */
+}
+
+/* 动画效果 */
+@keyframes scroll {
+  0% {
+    top: 0%; /* 初始位置 */
+  }
+  
+  100% {
+    top: -270%; /* 最终位置 */
+  }
+}
+
+/* 应用动画 */
+.scroll-image.animate {
+  animation: scroll 15s cubic-bezier(0.4, 0, 0.2, 1) forwards; /* 15s 动画，平滑加速减速 */
 }
