@@ -41,5 +41,5 @@ document.addEventListener('keydown', function(event) {
     }
 });
 // 绑定按钮点击事件
-document.getElementById('openBtn').addEventListener('click', loadSidebar);
+document.getElementById('myBtn_OrginLogin').addEventListener('click', loadSidebar);
 document.getElementById('myBtn_Login').addEventListener('click', loadLogin);
