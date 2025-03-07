@@ -1,3 +1,5 @@
+//遮罩层
+const mask = document.getElementById('myOverlay');
 // 动态加载侧栏
 function loadSidebar() {
     const sidebarContainer = document.getElementById('myRigister');
@@ -8,6 +10,7 @@ function loadSidebar() {
             // 通过修改容器宽度触发过渡动画
             setTimeout(() => {
                 sidebarContainer.style.width = "600px";
+                mask.style.display = 'block';
             }, 10); // 微小的延迟确保DOM更新
         })
         .catch(error => {
@@ -26,6 +29,7 @@ function loadLogin() {
                 myLogin.style.width = "1000px";
                 const event = new Event('loginLoaded');
                 document.dispatchEvent(event);
+                mask.style.display = 'block';
             }, 10);
         })
         .catch(error => {
@@ -38,6 +42,7 @@ document.addEventListener('keydown', function(event) {
     if (event.key == "Escape") {
         document.getElementById('myRigister').style.width = "0";
         document.getElementById('myLogin').style.width = "0";
+        mask.style.display = 'none';
     }
 });
 // 绑定按钮点击事件
