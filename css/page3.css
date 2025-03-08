@@ -34,7 +34,7 @@ body, html {
 
 /* 应用动画 */
 .scroll-image.animate {
-  animation: scroll 15s cubic-bezier(0.4, 0, 0.2, 1) forwards; 
+  animation: scroll 20s cubic-bezier(0.4, 0, 0.2, 1) forwards; 
   top: -260%; /* 确保动画结束时停在最后一帧 */
 }
 
