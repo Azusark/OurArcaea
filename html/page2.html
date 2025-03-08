@@ -3,37 +3,35 @@
 <head>
 	<title>Page 2</title>
 </head>
+
 <body>
 	<h1>Welcome to Page 2</h1>
 	<p>This is the second page of my website.</p>
-	<div id="myloading" style="display:block; position:  absolute;top: 0;left: 0;width: 100%; height: 100%;z-index:10;overflow: hidden;">
+	<div id="myloading" style="display:block; position:  absolute;top: 0;left: 0;width: 100%; height: 100%;z-index:100;overflow: hidden;">
 		<img id="myLoadingImg1" src="../icon/loading/loading1.png" alt="加载动画1" 
 		style="position: absolute; left: 0; top: 0; width: 1430px; height:1080px;
-		overflow: hidden;z-index: 10;transition: left 2s ease;">
+		overflow: hidden;z-index: 100;transition: left 2s ease;">
 		<img id="myLoadingImg2" src="../icon/loading/loading2.png" alt="加载动画2" 
 		style="position: absolute; right: 0; top: 0;width: 495px; height:1080px;
-		overflow: hidden;z-index: 10;transition: right 2s ease;">
+		overflow: hidden;z-index: 100;transition: right 2s ease;">
 	</div>
-	<script>
-		function MoveToPage2(){
-	const myLoading = document.getElementById('myLoading');
-    const myLoadingImg1 = document.getElementById('myLoadingImg1');
-    const myLoadingImg2 = document.getElementById('myLoadingImg2');
-    setTimeout(() => {
-		myLoadingImg1.style.left = '-1430px';
-		myLoadingImg2.style.right = '-495px';
-		setTimeout(() => {
-			myLoading.style.display = 'block';
-		}, 2010);
-	},500);
-}
-document.addEventListener("DOMContentLoaded", () => {
-	// const urlParams = new URLSearchParams(window.location.search);
-	// const action = urlParams.get('action');
-	// if (action === 'init') {
-	// }
-	MoveToPage2();
-});
-	</script>
+	<!-- 渐变滤镜 -->
+	<div style="background: linear-gradient(to top, #702770, #0d000e);
+	position:absolute;top:0;left:0;height:100%;width:100%;opacity: 0.85;
+	z-index:-1;"></div>
+	<img src="../icon/background/back_startgame.png" alt="背景图片"
+	style="position: absolute; left: 0; top: 0; width: 100%; height: 100%;z-index: -10;">
+	<div style="position: absolute; top: 80px; left: 0; width: 99%; height: 80%;border: solid 5px #e0da9f; overflow: hidden;">
+		<svg width="800" height="600" viewBox="0 0 800 600">
+			<clipPath id="custom-shape">
+				<path d="M100,0 Q200,50 100,100 Q0,50 100,0" />
+			</clipPath>
+			<image href="../icon/long.png"width="400" height="400" clip-path="url(#custom-shape)"left="2000" top="100" />
+		</svg>
+	</div>
+	<image src="../icon/long.png" style=" position: absolute; left: 200px; top: 100px; width: 400px; height: 400px;
+	clip-path: path('M100,0 Q200,50 100,100 Q0,50 100,0');"/>
+	<script type="text/javascript" src="../js/my_interface.js"></script>
+	<script type="text/javascript" src="../js/page2.js"></script>
 </body>
 </html>

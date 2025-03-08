@@ -58,7 +58,7 @@ document.getElementById('myBtn_StartGame').addEventListener('click', function() 
         myLoadingImg2.style.right = "0";
         setTimeout(() => {
             //跳转到其他界面
-            window.location.href = "../html/page2.html?action=init";
+            window.location.href = "../html/page2.html";
             }, 3000);
     },10);
 });
