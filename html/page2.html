@@ -6,9 +6,34 @@
 <body>
 	<h1>Welcome to Page 2</h1>
 	<p>This is the second page of my website.</p>
-	<img src="../icon/loading/loading1.png" alt="加载动画1" 
-    style="position: absolute; left: 0; top: 0; width: 1420px; height:1080px;overflow: hidden;">
-	<img src="../icon/loading/loading2.png" alt="加载动画1" 
-    style="position: absolute; right: 0; top: 0;width: 495px; height:1080px;overflow: hidden;">
+	<div id="myloading" style="display:block; position:  absolute;top: 0;left: 0;width: 100%; height: 100%;z-index:10;overflow: hidden;">
+		<img id="myLoadingImg1" src="../icon/loading/loading1.png" alt="加载动画1" 
+		style="position: absolute; left: 0; top: 0; width: 1430px; height:1080px;
+		overflow: hidden;z-index: 10;transition: left 2s ease;">
+		<img id="myLoadingImg2" src="../icon/loading/loading2.png" alt="加载动画2" 
+		style="position: absolute; right: 0; top: 0;width: 495px; height:1080px;
+		overflow: hidden;z-index: 10;transition: right 2s ease;">
+	</div>
+	<script>
+		function MoveToPage2(){
+	const myLoading = document.getElementById('myLoading');
+    const myLoadingImg1 = document.getElementById('myLoadingImg1');
+    const myLoadingImg2 = document.getElementById('myLoadingImg2');
+    setTimeout(() => {
+		myLoadingImg1.style.left = '-1430px';
+		myLoadingImg2.style.right = '-495px';
+		setTimeout(() => {
+			myLoading.style.display = 'block';
+		}, 2010);
+	},500);
+}
+document.addEventListener("DOMContentLoaded", () => {
+	// const urlParams = new URLSearchParams(window.location.search);
+	// const action = urlParams.get('action');
+	// if (action === 'init') {
+	// }
+	MoveToPage2();
+});
+	</script>
 </body>
 </html>

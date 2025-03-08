@@ -27,9 +27,11 @@ function loadLogin() {
             myLogin.innerHTML = html;
             setTimeout(() => {
                 myLogin.style.width = "1000px";
+                mask.style.display = 'block';
+                setTimeout(() => {
                 const event = new Event('loginLoaded');
                 document.dispatchEvent(event);
-                mask.style.display = 'block';
+                },100);  
             }, 10);
         })
         .catch(error => {
@@ -44,6 +46,21 @@ document.addEventListener('keydown', function(event) {
         document.getElementById('myLogin').style.width = "0";
         mask.style.display = 'none';
     }
+});
+//开始游戏-进入选关界面
+document.getElementById('myBtn_StartGame').addEventListener('click', function() {
+    const myLoading = document.getElementById('myLoading');
+    const myLoadingImg1 = document.getElementById('myLoadingImg1');
+    const myLoadingImg2 = document.getElementById('myLoadingImg2');
+    myLoading.style.display = 'block';
+    setTimeout(() => {
+        myLoadingImg1.style.left = "0";
+        myLoadingImg2.style.right = "0";
+        setTimeout(() => {
+            //跳转到其他界面
+            window.location.href = "../html/page2.html?action=init";
+            }, 3000);
+    },10);
 });
 // 绑定按钮点击事件
 document.getElementById('myBtn_OrginLogin').addEventListener('click', loadSidebar);
