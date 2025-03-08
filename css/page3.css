@@ -27,7 +27,6 @@ body, html {
   0% {
     top: 0%; /* 初始位置 */
   }
-  
   100% {
     top: -260%; /* 最终位置，根据图片高度设置 */
   }
@@ -38,3 +37,4 @@ body, html {
   animation: scroll 15s cubic-bezier(0.4, 0, 0.2, 1) forwards; 
   top: -260%; /* 确保动画结束时停在最后一帧 */
 }
+
