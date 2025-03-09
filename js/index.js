@@ -54,6 +54,7 @@ document.getElementById('myBtn_StartGame').addEventListener('click', function() 
     const myLoadingImg2 = document.getElementById('myLoadingImg2');
     myLoading.style.display = 'block';
     setTimeout(() => {
+        
         myLoadingImg1.style.left = "0";
         myLoadingImg2.style.right = "0";
         setTimeout(() => {

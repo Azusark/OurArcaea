@@ -8,10 +8,21 @@ container.addEventListener('click', () => {
 
   // 监听动画结束事件
   image.addEventListener('animationend', () => {
-    // 动画结束后，添加点击事件监听器
+    // 动画结束后，添加点击事件监听器到容器
     container.addEventListener('click', () => {
-      // 跳转到目标网页
-      window.location.href = "../index.html"; // 替换为目标网页的 URL
+      const myLoading = document.getElementById('myLoading');
+      const myLoadingImg1 = document.getElementById('myLoadingImg1');
+      const myLoadingImg2 = document.getElementById('myLoadingImg2');
+      myLoading.style.display = 'block';
+      setTimeout(() => {
+            
+          myLoadingImg1.style.left = "0";
+          myLoadingImg2.style.right = "0";
+          setTimeout(() => {
+              //跳转到其他界面
+              window.location.href = "../html/index.html?action=init";
+          }, 3000);
+      }, 10);
     }, { once: true }); // 只触发一次
   }, { once: true }); // 只触发一次
 });
@@ -19,11 +30,10 @@ container.addEventListener('click', () => {
 
 
 
-
 // 图片淡入独立功能配置 (需要修改的参数)
 const POPUP_CONFIG = {
   showDelay: 8000,   // X秒后显示 (单位：毫秒)
-  hideDelay: 7000,   // 显示后Y秒隐藏 (单位：毫秒)
+  hideDelay: 12000,   // 显示后Y秒隐藏 (单位：毫秒)
   position: {
     x: window.innerWidth * 0.5, // 水平居中
     y: window.innerHeight * 0.5 // 垂直居中
