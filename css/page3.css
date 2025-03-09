@@ -28,13 +28,13 @@ body, html {
     top: 0%; /* 初始位置 */
   }
   100% {
-    top: -260%; /* 最终位置，根据图片高度设置 */
+    top: -215%; /* 最终位置，根据图片高度设置 */
   }
 }
 
 /* 应用动画 */
 .scroll-image.animate {
   animation: scroll 20s cubic-bezier(0.4, 0, 0.2, 1) forwards; 
-  top: -260%; /* 确保动画结束时停在最后一帧 */
+  top: -215%; /* 确保动画结束时停在最后一帧 */
 }
 
