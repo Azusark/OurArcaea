@@ -1,27 +1,4 @@
-//进入动画
-MoveToPage
-    .init({
-		myLoading: 'myLoading_2',
-		myLoadingImg1: 'myLoadingImg1_2',
-		myLoadingImg2: 'myLoadingImg2_2'
-    })
-    .EnterThisPage();
-// function MoveToPage2(){
-// 	const myLoading = document.getElementById('myLoading_2');
-//     const myLoadingImg1 = document.getElementById('myLoadingImg1_2');
-//     const myLoadingImg2 = document.getElementById('myLoadingImg2_2');
-//     setTimeout(() => {
-// 		myLoadingImg1.style.left = '-1430px';
-// 		myLoadingImg2.style.right = '-495px';
-// 		setTimeout(() => {
-// 			myLoading.style.display = 'none';
-// 		}, 2010);
-// 	},500);
-// }
-// document.addEventListener("DOMContentLoaded", () => {
-// 	MoveToPage2();
-// });
-
+const channel = new BroadcastChannel('AnimationChannel');
 //遮罩层
 const mask = document.getElementById('myOverlay');
 // 动态加载侧栏
@@ -73,19 +50,12 @@ document.addEventListener('keydown', function(event) {
 });
 //开始游戏-进入选关界面
 document.getElementById('myBtn_StartGame').addEventListener('click', function() {
-    const myLoading = document.getElementById('myLoading');
-    const myLoadingImg1 = document.getElementById('myLoadingImg1');
-    const myLoadingImg2 = document.getElementById('myLoadingImg2');
-    myLoading.style.display = 'block';
+    channel.postMessage({ type: 'PlayAnimation' });
+    console.log('开始游戏');
     setTimeout(() => {
-        
-        myLoadingImg1.style.left = "0";
-        myLoadingImg2.style.right = "0";
-        setTimeout(() => {
-            //跳转到其他界面
-            window.location.href = "../html/page2.html";
-            }, 3000);
-    },10);
+        //跳转到其他界面
+        window.location.href = "../html/page2.html";
+        }, 2800);
 });
 // 绑定按钮点击事件
 document.getElementById('myBtn_OrginLogin').addEventListener('click', loadSidebar);

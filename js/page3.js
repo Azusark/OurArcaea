@@ -1,6 +1,6 @@
 const container = document.querySelector('.container');
 const image = document.querySelector('.scroll-image');
-
+const channel = new BroadcastChannel('AnimationChannel');
 // 点击容器触发动画
 container.addEventListener('click', () => {
   // 添加动画类
@@ -10,19 +10,25 @@ container.addEventListener('click', () => {
   image.addEventListener('animationend', () => {
     // 动画结束后，添加点击事件监听器到容器
     container.addEventListener('click', () => {
-      const myLoading = document.getElementById('myLoading');
-      const myLoadingImg1 = document.getElementById('myLoadingImg1');
-      const myLoadingImg2 = document.getElementById('myLoadingImg2');
-      myLoading.style.display = 'block';
+      channel.postMessage({ type: 'PlayAnimation' });
+      console.log('跳转到主界面');
       setTimeout(() => {
+        //跳转到其他界面
+        window.location.href = "../html/index.html";
+      }, 2800);
+      // const myLoading = document.getElementById('myLoading');
+      // const myLoadingImg1 = document.getElementById('myLoadingImg1');
+      // const myLoadingImg2 = document.getElementById('myLoadingImg2');
+      // myLoading.style.display = 'block';
+      // setTimeout(() => {
             
-          myLoadingImg1.style.left = "0";
-          myLoadingImg2.style.right = "0";
-          setTimeout(() => {
-              //跳转到其他界面
-              window.location.href = "../html/index.html?action=init";
-          }, 3000);
-      }, 10);
+      //     myLoadingImg1.style.left = "0";
+      //     myLoadingImg2.style.right = "0";
+      //     setTimeout(() => {
+      //         //跳转到其他界面
+      //         window.location.href = "../html/index.html?action=init";
+      //     }, 3000);
+      // }, 10);
     }, { once: true }); // 只触发一次
   }, { once: true }); // 只触发一次
 });
