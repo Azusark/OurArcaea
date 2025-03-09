@@ -23,7 +23,7 @@ const MoveToPage = {
 	// 	console.error("Elements not initialized. Call init() first.");
 	// 	return;
 	//   }
-		document.getElementById('myBth').addEventListener('click', function() {
+		this.myBth.addEventListener('click', function() {
 			this.myLoading.style.display = "block";
 			setTimeout(() => {
 				this.myLoadingImg1.style.left = "0";
@@ -41,7 +41,7 @@ const MoveToPage = {
 				this.myLoadingImg1.style.left = '-1430px';
 				this.myLoadingImg2.style.right = '-495px';
 				setTimeout(() => {
-					this.myLoading.style.display = 'block';
+					this.myLoading.style.display = 'none';
 				}, 2010);
 			},500);
 		});

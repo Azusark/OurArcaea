@@ -1,3 +1,27 @@
+//进入动画
+MoveToPage
+    .init({
+		myLoading: 'myLoading_2',
+		myLoadingImg1: 'myLoadingImg1_2',
+		myLoadingImg2: 'myLoadingImg2_2'
+    })
+    .EnterThisPage();
+// function MoveToPage2(){
+// 	const myLoading = document.getElementById('myLoading_2');
+//     const myLoadingImg1 = document.getElementById('myLoadingImg1_2');
+//     const myLoadingImg2 = document.getElementById('myLoadingImg2_2');
+//     setTimeout(() => {
+// 		myLoadingImg1.style.left = '-1430px';
+// 		myLoadingImg2.style.right = '-495px';
+// 		setTimeout(() => {
+// 			myLoading.style.display = 'none';
+// 		}, 2010);
+// 	},500);
+// }
+// document.addEventListener("DOMContentLoaded", () => {
+// 	MoveToPage2();
+// });
+
 //遮罩层
 const mask = document.getElementById('myOverlay');
 // 动态加载侧栏
