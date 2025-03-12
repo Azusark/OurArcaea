@@ -20,11 +20,10 @@
 	position: fixed;
   top: 0;
   left: 0; 
-  width: 0;
+  width: 1000px;
   height: 100%;
   overflow: hidden; /* 防止内容溢出 */
-  box-shadow: -2px 0 5px rgba(0,0,0,0.2);
-  transition: width 0.5s ease; /* 修正过渡属性 */
+  display: none;
   z-index: 100;
 }
 .my_overlay{

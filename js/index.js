@@ -1,4 +1,5 @@
 const channel = new BroadcastChannel('AnimationChannel');
+let IsCanEscape = false;
 //遮罩层
 const mask = document.getElementById('myOverlay');
 // 动态加载侧栏
@@ -27,24 +28,30 @@ function loadLogin() {
         .then(html => {
             myLogin.innerHTML = html;
             setTimeout(() => {
-                myLogin.style.width = "1000px";
+                myLogin.style.display= "block";
                 mask.style.display = 'block';
+                window.dispatchEvent(new CustomEvent('LoginImageMove1'));
+                console.log('加载登陆菜单');
                 setTimeout(() => {
-                const event = new Event('loginLoaded');
-                document.dispatchEvent(event);
-                },100);  
+                    IsCanEscape = true;
+                }, 3000);
             }, 10);
         })
         .catch(error => {
             console.error('加载侧栏失败:', error);
             myLogin.innerHTML = '侧栏加载失败';
         });
+
 }
 //点击ESC关闭侧栏
 document.addEventListener('keydown', function(event) {
-    if (event.key == "Escape") {
+    if (event.key == "Escape" && IsCanEscape==true) {
         document.getElementById('myRigister').style.width = "0";
-        document.getElementById('myLogin').style.width = "0";
+        window.dispatchEvent(new CustomEvent('LoginImageMove2'));
+        setTimeout(() => {
+            document.getElementById('myLogin').style.display = "none";
+            IsCanEscape = false;
+        }, 3000);
         mask.style.display = 'none';
     }
 });
