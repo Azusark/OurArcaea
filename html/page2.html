@@ -4,9 +4,8 @@
 	<title>Page 2</title>
 </head>
 <link rel="stylesheet" type="text/css" href="../css/page2.css">
+<link rel="stylesheet" type="text/css" href="../css/cssGrocery.css">
 <body>
-	<h1>Welcome to Page 2</h1>
-	<p>This is the second page of my website.</p>
 	<!-- 渐变滤镜 -->
 	<div style="background: linear-gradient(to top, #702770, #0d000e);
 	position:absolute;top:0;left:0;height:100%;width:100%;opacity: 0.85;
@@ -18,31 +17,15 @@
 	</div> -->
     <div class="scroll-container" id="scrollContainer">
         <div class="scroll-content" id="scrollContent">
+			<!-- 因内容较多，使用js加载 -->
 			<div class="item-container">
-				<image src="../icon/album/album1.png"class="item"></image>
+				<image src="../icon/album/album1.png" class="item">
 			</div>
-			<div class="item-container">
-				<image src="../icon/album/album1.png"class="item"></image>
-			</div>
-			<div class="item-container">
-				<image src="../icon/album/album1.png"class="item"></image>
-			</div>
-			<div class="item-container">
-				<image src="../icon/album/album1.png"class="item"></image>
-			</div>
-			<div class="item-container">
-				<image src="../icon/album/album2.png"class="item"></image>
-			</div>
-			<div class="item-container">
-				<image src="../icon/album/album3.png"class="item"></image>
-			</div>
-			<div class="item-container">
-				<image src="../icon/album/album4.png"class="item"></image>
-			</div>
-			<div class="item-container"></div>
         </div>
     </div>
-
+	<!-- 底部菜单 -->
+	<div id="backButton"class="mydiv"style="position:absolute;bottom:30px;left:20px;">后退按钮(临时)</div>
+	<!-- 加载js文件 -->
 	<script type="text/javascript" src="../js/page2.js"></script>
 </body>
 </html>

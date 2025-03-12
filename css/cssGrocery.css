@@ -1,11 +1,4 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Test1</title>
-</head>
-<body>
-<style>
+/* 记录一些学来的好看CSS代码 */
 .mydiv {
     position: relative;
     width: 220px;
@@ -14,7 +7,7 @@
     text-align: center;
     color: #fff;
     font-size: 20px;
-    background: #55557f;
+    background: #9393cc;
     cursor: pointer;
     border-radius: 10px;
     /* 添加过渡效果 */
@@ -23,7 +16,7 @@
 .mydiv::before {
     content: "";
     position: absolute;
-    border: 2px solid #55557f;
+    border: 2px solid  #9393cc;
     width: 240px;
     height: 84px;
     border-radius: 10px;
@@ -51,11 +44,3 @@
 .mydiv:hover {
     filter: brightness(1.5);
 }
-</style>
-
-
-<div class="mydiv">my_con</div>
-
-
-</body>
-</html>

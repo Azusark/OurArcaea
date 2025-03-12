@@ -1,44 +1,109 @@
-//滑动框
+//滚动效果变量
+const channel = new BroadcastChannel('AnimationChannel');
 const container = document.getElementById('scrollContainer');
 const content = document.getElementById('scrollContent');
 let isDown = false;
 let startX;
 let scrollLeft;
-// 鼠标事件处理
+let velocity = 0;
+let lastTime = 0;
+let lastScroll = 0;
+let rafId;
+//加载专辑
+function loadAlbum() {
+  var myAlbumsContainer = new Array();
+  var myAlbumsItem = new Array();
+  for (var i = 1; i <= 16; i++) {
+    myAlbumsContainer[i]=document.createElement('div');
+    myAlbumsContainer[i].className = 'item-container';
+    myAlbumsItem[i]=document.createElement('img');
+    myAlbumsItem[i].src = "../icon/album/album"+ i + ".png";
+    console.log(myAlbumsItem[i].src);
+    myAlbumsItem[i].className = 'item';
+    myAlbumsContainer[i].appendChild(myAlbumsItem[i]);
+    content.appendChild(myAlbumsContainer[i]);
+  }
+}
+loadAlbum();
+// 滑动鼠标事件
 container.addEventListener('mousedown', (e) => {
-	isDown = true;
-	startX = e.pageX - container.offsetLeft;
-	scrollLeft = container.scrollLeft;
-	container.style.cursor = 'grabbing';
+  isDown = true;
+  startX = e.clientX - container.offsetLeft;
+  scrollLeft = container.scrollLeft;
+  cancelAnimationFrame(rafId);
+  container.style.cursor = 'grabbing';
 });
-container.addEventListener('mouseleave', () => {
-	isDown = false;
-	container.style.cursor = 'grab';
+
+document.addEventListener('mouseup', () => {
+  isDown = false;
+  container.style.cursor = 'grab';
+  applyMomentum();
 });
-container.addEventListener('mouseup', () => {
-	isDown = false;
-	container.style.cursor = 'grab';
+
+document.addEventListener('mousemove', (e) => {
+  if (!isDown) return;
+  e.preventDefault();
+  const x = e.clientX - container.offsetLeft;
+  const walk = (x - startX) * 1.5; // 降低滑动系数
+  container.scrollLeft = scrollLeft - walk;
+  // 计算速度
+  const time = Date.now();
+  if (time > lastTime) {
+    velocity = (container.scrollLeft - lastScroll) / (time - lastTime);
+    lastTime = time;
+    lastScroll = container.scrollLeft;
+  }
 });
-container.addEventListener('mousemove', (e) => {
-	if (!isDown) return;
-	e.preventDefault();
-	const x = e.pageX - container.offsetLeft;
-	const walk = (x - startX) * 2; // 滑动速度系数
-	container.scrollLeft = scrollLeft - walk;
-});
-// 触摸事件处理
+// 滑动触摸事件
 container.addEventListener('touchstart', (e) => {
-	isDown = true;
-	startX = e.touches[0].pageX - container.offsetLeft;
-	scrollLeft = container.scrollLeft;
+  isDown = true;
+  startX = e.touches[0].clientX - container.offsetLeft;
+  scrollLeft = container.scrollLeft;
+  cancelAnimationFrame(rafId);
+  velocity = 0;
 });
+
 container.addEventListener('touchend', () => {
-	isDown = false;
+  isDown = false;
+  applyMomentum();
 });
+
 container.addEventListener('touchmove', (e) => {
-	if (!isDown) return;
-	e.preventDefault();
-	const x = e.touches[0].pageX - container.offsetLeft;
-	const walk = (x - startX) * 2;
-	container.scrollLeft = scrollLeft - walk;
+  if (!isDown) return;
+  e.preventDefault();
+  
+  const x = e.touches[0].clientX - container.offsetLeft;
+  const walk = (x - startX) * 1.2; // 降低触摸滑动系数
+  container.scrollLeft = scrollLeft - walk;
+  // 计算速度
+  const time = Date.now();
+  if (time > lastTime) {
+    velocity = (container.scrollLeft - lastScroll) / (time - lastTime);
+    lastTime = time;
+    lastScroll = container.scrollLeft;
+  }
+});
+// 惯性滑动函数
+function applyMomentum() {
+  const minVelocity = 0.15;
+  const friction = 0.99;
+  if (Math.abs(velocity) > minVelocity) {
+    container.scrollLeft += velocity * 3.5;
+    velocity *= friction;
+    rafId = requestAnimationFrame(applyMomentum);
+  } 
+  else {
+    velocity = 0;
+  }
+}
+//回弹效果
+
+//返回主页
+document.getElementById('backButton').addEventListener('click', function() {
+  channel.postMessage({ type: 'PlayAnimation' });
+  console.log('开始游戏');
+  setTimeout(() => {
+      //跳转到其他界面
+      window.location.href = "../html/index.html";
+      }, 2800);
 });
