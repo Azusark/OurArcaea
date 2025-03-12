@@ -58,6 +58,13 @@
   opacity: 1;
   
 }
+.half{
+  position: fixed;
+  left: 40%;
+  top: 0%;
+  width: 70%;
+  height: 100%;
+}
 
 @keyframes backgroundScroll {
   from {
