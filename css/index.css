@@ -55,7 +55,9 @@
   height: 200%;
   z-index: -1;
   opacity: 1;
-  
+  user-select: none; 
+  -webkit-user-drag: none;
+  pointer-events: none;
 }
 .half{
   position: fixed;
@@ -63,6 +65,8 @@
   top: 0%;
   width: 70%;
   height: 100%;
+  user-select: none; 
+  -webkit-user-drag: none;
 }
 
 @keyframes backgroundScroll {
@@ -72,4 +76,10 @@
   to {
     transform: translateY(-50%);
   }
+}
+svg text {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+   -ms-user-select: none;
+       user-select: none;
 }

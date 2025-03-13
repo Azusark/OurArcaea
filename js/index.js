@@ -34,7 +34,7 @@ function loadLogin() {
                 console.log('加载登陆菜单');
                 setTimeout(() => {
                     IsCanEscape = true;
-                }, 3000);
+                }, 990);
             }, 10);
         })
         .catch(error => {
@@ -46,12 +46,12 @@ function loadLogin() {
 //点击ESC关闭侧栏
 document.addEventListener('keydown', function(event) {
     if (event.key == "Escape" && IsCanEscape==true) {
+        IsCanEscape = false;
         document.getElementById('myRigister').style.width = "0";
         window.dispatchEvent(new CustomEvent('LoginImageMove2'));
         setTimeout(() => {
             document.getElementById('myLogin').style.display = "none";
-            IsCanEscape = false;
-        }, 3000);
+        }, 1000);
         mask.style.display = 'none';
     }
 });
