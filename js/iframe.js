@@ -27,8 +27,8 @@ function MyAnimation(){
 			myLoadingImg2.style.right = '-520px';
 			setTimeout(() => {
 				myLoading.style.display = 'none';
-			}, 2600);
-		},3200);
+			}, 1600);
+		},2200);
 	},10);
 }
 window.addEventListener('load', updateScale);

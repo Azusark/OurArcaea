@@ -16,7 +16,7 @@ container.addEventListener('click', () => {
       setTimeout(() => {
         //跳转到其他界面
         window.location.href = "../html/index.html";
-      }, 2800);
+      }, 1600);
     }, { once: true }); // 只触发一次
   }, { once: true }); // 只触发一次
 });

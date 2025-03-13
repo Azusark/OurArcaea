@@ -105,5 +105,5 @@ document.getElementById('backButton').addEventListener('click', function() {
   setTimeout(() => {
       //跳转到其他界面
       window.location.href = "../html/index.html";
-      }, 2800);
+      }, 1600);
 });

@@ -1,0 +1,43 @@
+		/* 基础版 - 纯菱形裁剪 */
+		.diamond-basic {
+			width: 200px;
+			height: 200px;
+			background: #00bcd4;
+			clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+		  }
+		  .diamond-border {
+			width: 100px;
+			height: 100px;
+			position: relative;
+			background: linear-gradient(45deg, #dab072,#dab072);
+			
+			/* 主裁剪区域 */
+			clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+			
+			/* 伪元素实现边框 */
+			&::before {
+			  content: '';
+			  position: absolute;
+			  top: 5px;
+			  left: 5px;
+			  right: 5px;
+			  bottom: 5px;
+			  background: url(../icon/topcontainer/character/1.png)center/cover no-repeat;
+			  background-size: 100%;
+			  clip-path: inherit;
+			  z-index: 1;
+			}
+		  }
+		  /* 动态版 - 悬浮动画 */
+		  .diamond-animate {
+			width: 150px;
+			height: 150px;
+			background: url(https://picsum.photos/300) center/cover;
+			transition: all 0.3s;
+			clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
+			
+			&:hover {
+			  transform: rotate(45deg) scale(1.1);
+			  clip-path: polygon(30% 0, 100% 30%, 70% 100%, 0 70%);
+			}
+}

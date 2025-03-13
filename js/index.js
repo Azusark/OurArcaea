@@ -2,6 +2,20 @@ const channel = new BroadcastChannel('AnimationChannel');
 let IsCanEscape = false;
 //遮罩层
 const mask = document.getElementById('myOverlay');
+//顶栏
+function topContainer() {
+    const myTopContainer = document.getElementById('myTopContainer');
+    fetch('top_container.html')
+        .then(response => response.text())
+        .then(html => {
+            myTopContainer.innerHTML = html;
+        })
+        .catch(error => {
+            console.error('加载侧栏失败:', error);
+            sidebarContainer.innerHTML = '侧栏加载失败';
+        });
+}
+topContainer();
 // 动态加载侧栏
 function loadSidebar() {
     const sidebarContainer = document.getElementById('myRigister');
@@ -62,7 +76,7 @@ document.getElementById('myBtn_StartGame').addEventListener('click', function() 
     setTimeout(() => {
         //跳转到其他界面
         window.location.href = "../html/page2.html";
-        }, 2800);
+        }, 1600);
 });
 // 绑定按钮点击事件
 document.getElementById('myBtn_OrginLogin').addEventListener('click', loadSidebar);
