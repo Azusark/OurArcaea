@@ -96,7 +96,7 @@ function fadeVolume(audio, from, to, duration) {
         // 定义初始图片编号
     let currentImageIndex = 1;
     // 定义图片总数
-    const totalImages = 2;
+    const totalImages = 7;
 
     // 获取图片元素 
     const partnerImage = document.getElementById('partnerImage');
