@@ -13,8 +13,12 @@
 <body>
     <h1>欢迎来到我们的网站!</h1>
     <p>welcome to our website!!</p>
-    <!-- 主要按钮 -->
-    <div style="position: absolute; width: 800px; height: 600px; right : 550px; top: 100px; ">
+   
+    <img src="../icon/long.png" alt="背景图片" class="moving-bg"style="">
+    <img src="../icon/half.png" alt="右下角" class="half"style="">
+    <img id="partnerImage" src="../icon/partner/partner1.png" alt="搭档图片" class="partner">
+     <!-- 主要按钮 --> 
+     <div style="position: absolute; width: 900px; height: 600px; right : 550px; top: 100px; ">
         <svg width="800" height="600" viewBox="0 0 800 600">
             <path d="M500,300 L650,150 L800,300 L650,450 Z" 
                 fill="rgba(176, 85, 224, 0.667)"
@@ -32,6 +36,7 @@
             <path d="M157.5,185 L585,185 L485,285 L140,285  L125.5 245 Z"
                 fill="rgba(176, 85, 224, 0.667)"
                 class="custom-btn" 
+                id="PartnerChangeBtn"
                 stroke="white"     
                 stroke-width="4"   
                 stroke-linejoin="round"/>
@@ -55,13 +60,14 @@
                 stroke="white"     
                 stroke-width="4"   
                 stroke-linejoin="round"/>
-            <text font-size="50" fill="Azure" x="170" y="500"pointer-events="none"user-select: "none">Login</text>
-            <text font-size="30" fill="Azure" x="380" y="490"pointer-events="none"user-select: "none">原来的注册按钮</text>
+            <text font-size="50" fill="Azure" x="170" y="500"pointer-events="none"user-select: "none">登录</text>
+            <text font-size="30" fill="Azure" x="380" y="490"pointer-events="none"user-select: "none">原来的登录按钮</text>
             <text font-size="60" fill="Azure" x="290" y="130"pointer-events="none"user-select: "none">开始游戏</text>
+            <text font-size="60" fill="Azure" x="200" y="250"pointer-events="none"user-select: "none">切换搭档</text>
+            <text font-size="60" fill="Azure" x="150" y="380"pointer-events="none"user-select: "none">切换音乐</text>
         </svg>
     </div>
-    <img src="../icon/long.png" alt="背景图片" class="moving-bg"style="">
-    <img src="../icon/half.png" alt="右下角" class="half"style="">
+    <audio id="background-music" src="../music/主界面音乐.mp3" loop></audio>
     <script type="text/javascript" src="../js/index.js"></script>
     <script type="text/javascript" src="../js/login.js"></script>
 </body>
