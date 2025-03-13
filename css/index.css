@@ -69,6 +69,33 @@
   -webkit-user-drag: none;
 }
 
+.partner {
+  position: fixed;
+  left: 20%;
+  top: 5%;
+  width: 120%;
+  height: 120%;
+  object-fit: contain; /* 确保图片在容器内按比例缩放 */
+  user-select: none;
+  -webkit-user-drag: none;
+  animation: slowMoveUpDown 5s infinite; /* 添加动画效果 */
+}
+
+@keyframes slowMoveUpDown {
+  0% {
+    transform: translateY(0); /* 初始位置 */
+  }
+  50% {
+    transform: translateY(10px); /* 移动到下方5px */
+  }
+  100% {
+    transform: translateY(0); /* 返回初始位置 */
+  }
+}
+
+
+
+
 @keyframes backgroundScroll {
   from {
     transform: translateY(0);
@@ -83,3 +110,14 @@ svg text {
    -ms-user-select: none;
        user-select: none;
 }
+
+/* 隐藏所有搭档图片 */
+.partner {
+  display: none;
+}
+
+/* 显示当前搭档图片 */
+#partnerImage {
+  display: block; /* 或其他合适的显示方式 */
+}
+

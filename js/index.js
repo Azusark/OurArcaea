@@ -67,3 +67,55 @@ document.getElementById('myBtn_StartGame').addEventListener('click', function() 
 // 绑定按钮点击事件
 document.getElementById('myBtn_OrginLogin').addEventListener('click', loadSidebar);
 document.getElementById('myBtn_Login').addEventListener('click', loadLogin);
+
+// 音乐播放配置
+const MUSIC_CONFIG = {
+    volume: 0.3, // 音量 (0到1)
+    fadeDuration: 1000 // 淡入淡出时间 (单位：毫秒)
+};
+
+  // 获取音乐元素
+    const music = document.getElementById('background-music');
+    music.volume = MUSIC_CONFIG.volume;
+    music.play();
+
+  // 音量淡入函数
+function fadeVolume(audio, from, to, duration) {
+    const startTime = Date.now();
+    const updateVolume = () => {
+    const elapsed = Date.now() - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+      audio.volume = from + (to - from) * progress;
+    if (progress < 1) {
+        requestAnimationFrame(updateVolume);
+    }
+    };    
+    updateVolume();
+}
+
+        // 定义初始图片编号
+    let currentImageIndex = 1;
+    // 定义图片总数
+    const totalImages = 7;
+
+    // 获取图片元素 
+    const partnerImage = document.getElementById('partnerImage');
+
+    // 获取按钮元素
+    const PartnerChangeBtn = document.getElementById('PartnerChangeBtn');
+
+    // 为按钮添加点击事件监听器
+    PartnerChangeBtn.addEventListener('click', () => {
+    // 更新图片编号，如果达到上限则重置为1
+    currentImageIndex = (currentImageIndex % totalImages) + 1;
+
+    // 更新图片的src属性
+    partnerImage.src = `../icon/partner/partner${currentImageIndex}.png`;
+});
+
+const preloadImages = [];
+for (let i = 1; i <= totalImages; i++) {
+  const img = new Image();
+  img.src = `../icon/partner/partner${i}.png`;
+  preloadImages.push(img);
+}

@@ -95,7 +95,7 @@ document.querySelector('.container').addEventListener('click', function () {
 
 // 音乐播放配置
 const MUSIC_CONFIG = {
-  volume: 0.5, // 音量 (0到1)
+  volume: 0.7, // 音量 (0到1)
   fadeDuration: 1000 // 淡入淡出时间 (单位：毫秒)
 };
 
@@ -107,6 +107,7 @@ document.addEventListener('click', function () {
   // 如果音乐未播放，则开始播放
   if (music.paused) {
     // 淡入效果
+    music.volume = MUSIC_CONFIG.volume;
     music.play();
     fadeVolume(music, 0, MUSIC_CONFIG.volume, MUSIC_CONFIG.fadeDuration);
   }
