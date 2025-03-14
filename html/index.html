@@ -18,56 +18,106 @@
     <img src="../icon/long.png" alt="背景图片" class="moving-bg"style="">
     <img src="../icon/half.png" alt="右下角" class="half"style="">
     <img id="partnerImage" src="../icon/partner/partner1.png" alt="搭档图片" class="partner">
-     <!-- 主要按钮 --> 
-     <div style="position: absolute; width: 900px; height: 600px; right : 550px; top: 100px; ">
-        <svg width="800" height="600" viewBox="0 0 800 600">
-            <path d="M500,300 L650,150 L800,300 L650,450 Z" 
-                fill="rgba(176, 85, 224, 0.667)"
-                class="custom-btn" 
-                stroke="white"     
-                stroke-width="4"   
-                stroke-linejoin="round" /> 
-            <path d="M217.5,65 L565,65 L635,135 L605,165 L 200 165 L187.5,125 Z"
-                fill="rgba(176, 85, 224, 0.667)"
-                class="custom-btn" 
-                id="myBtn_StartGame" 
-                stroke="white"     
-                stroke-width="4"   
-                stroke-linejoin="round"/>
-            <path d="M157.5,185 L585,185 L485,285 L140,285  L125.5 245 Z"
-                fill="rgba(176, 85, 224, 0.667)"
-                class="custom-btn" 
-                id="PartnerChangeBtn"
-                stroke="white"     
-                stroke-width="4"   
-                stroke-linejoin="round"/>
-            <path d="M92.5,315 L485,315 L585,415 L75 415 L62.5 375 Z"
-                fill="rgba(176, 85, 224, 0.667)"
-                class="custom-btn" 
-                stroke="white"     
-                stroke-width="4"   
-                stroke-linejoin="round"/>
-            <path d="M130,435 L357.5,435 L327.5,495 L340,535 L112.5,535 L100,495 Z"
-                fill="rgba(176, 85, 224, 0.667)"
-                class="custom-btn" 
-                id="myBtn_Login"
-                stroke="white"     
-                stroke-width="4"   
-                stroke-linejoin="round"/>
-            <path d="M377.5,435 L605,435 L635,465 L565,535 L360,535 L347.5,495 Z"
-                fill="rgba(176, 85, 224, 0.667)"
-                class="custom-btn"
-                id="myBtn_OrginLogin" 
-                stroke="white"     
-                stroke-width="4"   
-                stroke-linejoin="round"/>
-            <text font-size="50" fill="Azure" x="170" y="500"pointer-events="none"user-select: "none">登录</text>
-            <text font-size="30" fill="Azure" x="380" y="490"pointer-events="none"user-select: "none">原来的登录按钮</text>
-            <text font-size="60" fill="Azure" x="290" y="130"pointer-events="none"user-select: "none">开始游戏</text>
-            <text font-size="60" fill="Azure" x="200" y="250"pointer-events="none"user-select: "none">切换搭档</text>
-            <text font-size="60" fill="Azure" x="150" y="380"pointer-events="none"user-select: "none">切换音乐</text>
-        </svg>
-    </div>
+  <!-- 主要按钮 -->
+<div style="position: absolute; width: 900px; height: 600px; right : 550px; top: 100px;">
+    <svg width="806" height="600" viewBox="0 0 800 600">
+      <!-- 定义裁剪路径 -->
+      <defs>
+        <!-- 按钮 1 的裁剪路径 -->
+        <clipPath id="clip-btn1">
+          <path d="M500,300 L650,150 L800,300 L650,450 Z" />
+        </clipPath>
+  
+        <!-- 按钮 2 的裁剪路径 -->
+        <clipPath id="clip-btn2">
+          <path d="M217.5,65 L565,65 L635,135 L605,165 L 200 165 L187.5,125 Z" />
+        </clipPath>
+  
+        <!-- 按钮 3 的裁剪路径 -->
+        <clipPath id="clip-btn3">
+          <path d="M157.5,185 L585,185 L485,285 L140,285  L125.5 245 Z" />
+        </clipPath>
+  
+        <!-- 按钮 4 的裁剪路径 -->
+        <clipPath id="clip-btn4">
+          <path d="M92.5,315 L485,315 L585,415 L75 415 L62.5 375 Z" />
+        </clipPath>
+  
+        <!-- 按钮 5 的裁剪路径 -->
+        <clipPath id="clip-btn5">
+          <path d="M130,435 L357.5,435 L327.5,495 L340,535 L112.5,535 L100,495 Z" />
+        </clipPath>
+  
+        <!-- 按钮 6 的裁剪路径 -->
+        <clipPath id="clip-btn6">
+          <path d="M377.5,435 L605,435 L635,465 L565,535 L360,535 L347.5,495 Z" />
+        </clipPath>
+      </defs>
+  
+      <!-- 按钮 1：图片 + 裁剪 -->
+      <image xlink:href="../icon/btn/btn6.png" x="380" y="70" width="70%" height="70%" 
+             clip-path="url(#clip-btn1)" class="custom-btn" id="btn1" />
+  
+      <!-- 按钮 2：图片 + 裁剪 -->
+      <image xlink:href="../icon/btn/btn1.png" x="120" y="-90" width="70%" height="70%" 
+             clip-path="url(#clip-btn2)" class="custom-btn" id="myBtn_StartGame" />
+  
+      <!-- 按钮 3：图片 + 裁剪 -->
+      <image xlink:href="../icon/btn/btn2.png" x="90" y="30" width="70%" height="70%" 
+             clip-path="url(#clip-btn3)" class="custom-btn" id="PartnerChangeBtn" />
+  
+      <!-- 按钮 4：图片 + 裁剪 -->
+      <image xlink:href="../icon/btn/btn3.png" x="41" y="162" width="70%" height="70%" 
+             clip-path="url(#clip-btn4)" class="custom-btn" id="btn4" />
+  
+      <!-- 按钮 5：图片 + 裁剪 -->
+      <image xlink:href="../icon/btn/btn4.png" x="65" y="365" width="43%" height="43%" 
+             clip-path="url(#clip-btn5)" class="custom-btn" id="myBtn_Login" />
+  
+      <!-- 按钮 6：图片 + 裁剪 -->
+      <image xlink:href="../icon/btn/btn5.png" x="190" y="305" width="60%" height="60%" 
+             clip-path="url(#clip-btn6)" class="custom-btn" id="myBtn_OrginLogin" />
+  
+      <!-- 按钮描边 -->
+      <path d="M500,300 L650,150 L800,300 L650,450 Z" 
+            fill="none" 
+            stroke="white" 
+            stroke-width="4" />
+  
+      <path d="M217.5,65 L565,65 L635,135 L605,165 L 200 165 L187.5,125 Z"
+            fill="none" 
+            stroke="white" 
+            stroke-width="4" />
+  
+      <path d="M157.5,185 L585,185 L485,285 L140,285  L125.5 245 Z"
+            fill="none" 
+            stroke="white" 
+            stroke-width="4" />
+  
+      <path d="M92.5,315 L485,315 L585,415 L75 415 L62.5 375 Z"
+            fill="none" 
+            stroke="white" 
+            stroke-width="4" />
+  
+      <path d="M130,435 L357.5,435 L327.5,495 L340,535 L112.5,535 L100,495 Z"
+            fill="none" 
+            stroke="white" 
+            stroke-width="4" />
+  
+      <path d="M377.5,435 L605,435 L635,465 L565,535 L360,535 L347.5,495 Z"
+            fill="none" 
+            stroke="white" 
+            stroke-width="4" />
+  
+      <!-- 文字标签（确保文字在图片上方） -->
+      <text font-size="60" fill="Azure" x="565" y="325" pointer-events="none" user-select="none">World</text>
+      <text font-size="60" fill="Azure" x="360" y="490" pointer-events="none" user-select="none"></text>
+      <text font-size="60" fill="Azure" x="260" y="130" pointer-events="none" user-select="none">开始游戏</text>
+      <text font-size="60" fill="Azure" x="200" y="250" pointer-events="none" user-select="none">切换搭档</text>
+      <text font-size="60" fill="Azure" x="140" y="380" pointer-events="none" user-select="none">切换音乐</text>
+      <text font-size="60" fill="Azure" x="400" y="500" pointer-events="none" user-select="none">登录</text>
+    </svg>
+  </div>
     <audio id="background-music" src="../music/主界面音乐.mp3" loop></audio>
     <script type="text/javascript" src="../js/index.js"></script>
     <script type="text/javascript" src="../js/login.js"></script>
