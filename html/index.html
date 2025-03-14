@@ -23,6 +23,12 @@
     <svg width="806" height="600" viewBox="0 0 800 600">
       <!-- 定义裁剪路径 -->
       <defs>
+
+              <!-- 按钮 6 的裁剪路径 -->
+        <clipPath id="clip-btn6">
+            <path d="M377.5,435 L605,435 L635,465 L565,535 L360,535 L347.5,495 Z" />
+          </clipPath>
+          
         <!-- 按钮 1 的裁剪路径 -->
         <clipPath id="clip-btn1">
           <path d="M500,300 L650,150 L800,300 L650,450 Z" />
@@ -48,15 +54,10 @@
           <path d="M130,435 L357.5,435 L327.5,495 L340,535 L112.5,535 L100,495 Z" />
         </clipPath>
   
-        <!-- 按钮 6 的裁剪路径 -->
-        <clipPath id="clip-btn6">
-          <path d="M377.5,435 L605,435 L635,465 L565,535 L360,535 L347.5,495 Z" />
-        </clipPath>
+      
       </defs>
   
-      <!-- 按钮 1：图片 + 裁剪 -->
-      <image xlink:href="../icon/btn/btn6.png" x="380" y="70" width="70%" height="70%" 
-             clip-path="url(#clip-btn1)" class="custom-btn" id="btn1" />
+      
   
       <!-- 按钮 2：图片 + 裁剪 -->
       <image xlink:href="../icon/btn/btn1.png" x="120" y="-90" width="70%" height="70%" 
@@ -77,6 +78,10 @@
       <!-- 按钮 6：图片 + 裁剪 -->
       <image xlink:href="../icon/btn/btn5.png" x="190" y="305" width="60%" height="60%" 
              clip-path="url(#clip-btn6)" class="custom-btn" id="myBtn_OrginLogin" />
+
+      <!-- 按钮 1：图片 + 裁剪 -->
+      <image xlink:href="../icon/btn/btn6.png" x="380" y="70" width="70%" height="70%" 
+             clip-path="url(#clip-btn1)" class="custom-btn" id="btn1" />       
   
       <!-- 按钮描边 -->
       <path d="M500,300 L650,150 L800,300 L650,450 Z" 

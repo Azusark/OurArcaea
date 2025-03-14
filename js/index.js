@@ -133,3 +133,38 @@ for (let i = 1; i <= totalImages; i++) {
   img.src = `../icon/partner/partner${i}.png`;
   preloadImages.push(img);
 }
+
+// 获取所有按钮元素
+const buttons = document.querySelectorAll('.custom-btn');
+
+// 定义一组默认图片和悬停图片路径
+const buttonImages = [
+  { default: '../icon/btn/btn1.png', hover: '../icon/btn/btn1-hover.png' },
+  { default: '../icon/btn/btn2.png', hover: '../icon/btn/btn2-hover.png' },
+  { default: '../icon/btn/btn3.png', hover: '../icon/btn/btn3-hover.png' },
+  { default: '../icon/btn/btn4.png', hover: '../icon/btn/btn4-hover.png' },
+  { default: '../icon/btn/btn5.png', hover: '../icon/btn/btn5-hover.png' },
+  { default: '../icon/btn/btn6.png', hover: '../icon/btn/btn6-hover.png' },
+];
+
+// 为每个按钮添加事件监听器
+buttons.forEach((button, index) => {
+  // 检查是否有对应的图片路径
+  if (buttonImages[index]) {
+    const { default: defaultImage, hover: hoverImage } = buttonImages[index];
+
+    // 添加鼠标悬停事件监听器
+    button.addEventListener('mouseenter', () => {
+      console.log('鼠标进入', index);
+      button.setAttribute('xlink:href', hoverImage); // 切换到悬停图片
+    });
+
+    // 添加鼠标离开事件监听器
+    button.addEventListener('mouseleave', () => {
+      console.log('鼠标离开', index);
+      button.setAttribute('xlink:href', defaultImage); // 切换回默认图片
+    });
+  } else {
+    console.error(`按钮 ${index} 没有对应的图片路径`);
+  }
+});
