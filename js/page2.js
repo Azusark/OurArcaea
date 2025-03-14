@@ -1,3 +1,16 @@
+function topContainer() {
+  const myTopContainer = document.getElementById('myTopContainer');
+  fetch('top_container.html')
+      .then(response => response.text())
+      .then(html => {
+          myTopContainer.innerHTML = html;
+      })
+      .catch(error => {
+          console.error('加载侧栏失败:', error);
+          sidebarContainer.innerHTML = '侧栏加载失败';
+      });
+}
+topContainer();
 //滚动效果变量
 const channel = new BroadcastChannel('AnimationChannel');
 const container = document.getElementById('scrollContainer');
@@ -97,7 +110,6 @@ function applyMomentum() {
   }
 }
 //回弹效果
-
 //返回主页
 document.getElementById('backButton').addEventListener('click', function() {
   channel.postMessage({ type: 'PlayAnimation' });

@@ -1,43 +1,37 @@
-		/* 基础版 - 纯菱形裁剪 */
-		.diamond-basic {
-			width: 200px;
-			height: 200px;
-			background: #00bcd4;
-			clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
-		  }
-		  .diamond-border {
-			width: 100px;
-			height: 100px;
-			position: relative;
-			background: linear-gradient(45deg, #dab072,#dab072);
-			
-			/* 主裁剪区域 */
-			clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-			
-			/* 伪元素实现边框 */
-			&::before {
-			  content: '';
-			  position: absolute;
-			  top: 5px;
-			  left: 5px;
-			  right: 5px;
-			  bottom: 5px;
-			  background: url(../icon/topcontainer/character/1.png)center/cover no-repeat;
-			  background-size: 100%;
-			  clip-path: inherit;
-			  z-index: 1;
-			}
-		  }
-		  /* 动态版 - 悬浮动画 */
-		  .diamond-animate {
-			width: 150px;
-			height: 150px;
-			background: url(https://picsum.photos/300) center/cover;
-			transition: all 0.3s;
-			clip-path: polygon(50% 0, 100% 50%, 50% 100%, 0 50%);
-			
-			&:hover {
-			  transform: rotate(45deg) scale(1.1);
-			  clip-path: polygon(30% 0, 100% 30%, 70% 100%, 0 70%);
-			}
+
+  .line {
+    fill: none;
+    stroke-width: 3;
+    stroke-linejoin: round;
+    stroke-linecap: round;
+    stroke: #fff;
+    stroke-dasharray: 328 600;
+    animation: rotate 1s infinite linear;  
+	--colorA: #f24983;
+    filter:
+        drop-shadow(0 0 1px var(--colorA))
+        drop-shadow(0 0 2px var(--colorA))
+        drop-shadow(0 0 5px var(--colorA))
+		drop-shadow(0 0 10px var(--colorA));
+}
+.line2 {
+    animation: rotate 1s infinite -0.5s linear;
+	--colorA: #37c1ff;
+}
+@keyframes rotate {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 900;
+  }
+}
+@font-face {
+
+    font-family: 'deyihei';
+
+    src: url('../fonts/SmileySans-Oblique-2.ttf') format('truetype');
+
+
+
 }

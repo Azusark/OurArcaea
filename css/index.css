@@ -34,7 +34,7 @@
   height: 15%;
   overflow: hidden; /* 防止内容溢出 */
   display:block;
-  z-index: 900;
+  z-index: 90;
 }
 .my_overlay{
   position: fixed;

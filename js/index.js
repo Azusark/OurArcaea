@@ -73,6 +73,7 @@ document.addEventListener('keydown', function(event) {
 document.getElementById('myBtn_StartGame').addEventListener('click', function() {
     channel.postMessage({ type: 'PlayAnimation' });
     console.log('开始游戏');
+    window.dispatchEvent(new CustomEvent('titleChange'));
     setTimeout(() => {
         //跳转到其他界面
         window.location.href = "../html/page2.html";
@@ -114,10 +115,8 @@ function fadeVolume(audio, from, to, duration) {
 
     // 获取图片元素 
     const partnerImage = document.getElementById('partnerImage');
-
     // 获取按钮元素
     const PartnerChangeBtn = document.getElementById('PartnerChangeBtn');
-
     // 为按钮添加点击事件监听器
     PartnerChangeBtn.addEventListener('click', () => {
     // 更新图片编号，如果达到上限则重置为1
@@ -125,8 +124,10 @@ function fadeVolume(audio, from, to, duration) {
 
     // 更新图片的src属性
     partnerImage.src = `../icon/partner/partner${currentImageIndex}.png`;
+    window.dispatchEvent(new CustomEvent('partnerChange', {
+        detail: currentImageIndex // 数据存放在 detail 中
+    }));
 });
-
 const preloadImages = [];
 for (let i = 1; i <= totalImages; i++) {
   const img = new Image();
