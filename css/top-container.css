@@ -1,7 +1,7 @@
 
   .line {
     fill: none;
-    stroke-width: 3;
+    stroke-width: 0.25px;
     stroke-linejoin: round;
     stroke-linecap: round;
     stroke: #fff;
@@ -10,9 +10,9 @@
 	--colorA: #f24983;
     filter:
         drop-shadow(0 0 1px var(--colorA))
-        drop-shadow(0 0 2px var(--colorA))
-        drop-shadow(0 0 5px var(--colorA))
-		drop-shadow(0 0 10px var(--colorA));
+        drop-shadow(0 0 1px var(--colorA))
+        drop-shadow(0 0 1px var(--colorA))
+		    drop-shadow(0 0 1px var(--colorA));
 }
 .line2 {
     animation: rotate 1s infinite -0.5s linear;
@@ -26,12 +26,5 @@
     stroke-dashoffset: 900;
   }
 }
-@font-face {
-
-    font-family: 'deyihei';
-
-    src: url('../fonts/SmileySans-Oblique-2.ttf') format('truetype');
 
 
-
-}
