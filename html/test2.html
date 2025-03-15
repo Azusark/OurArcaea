@@ -1,0 +1,68 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Test2</title>
+</head>
+<body>
+<style>
+.mydiv {
+    position: relative;
+    width: 220px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    color: #fff;
+    font-size: 20px;
+    background: #55557f;
+    cursor: pointer;
+    border-radius: 10px;
+    /* 添加过渡效果 */
+    transition: all 0.5s;
+}
+.mydiv::before {
+    content: "";
+    position: absolute;
+    border: 2px solid #55557f;
+    width: 240px;
+    height: 84px;
+    border-radius: 10px;
+    inset: -10px;
+    animation: pathRotate 3s infinite linear;
+}
+@keyframes pathRotate {
+    0%,
+    100% {
+    clip-path: inset(0 0 98% 0);
+    }
+    25% {
+    clip-path: inset(0 98% 0 0);
+    }
+    50% {
+    clip-path: inset(98% 0 0 0);
+    }
+    75% {
+    clip-path: inset(0 0 0 98%);
+    }
+}
+.mydiv::after {
+    animation-delay: -1.5s;
+}
+.mydiv:hover {
+    filter: brightness(1.5);
+}
+</style>
+
+<p id="myp">This is a test page two.</p>
+<script>
+	const channel = new BroadcastChannel('myChannel');
+	const myp = document.getElementById('myp');
+	channel.onmessage = function(e) {
+		if (e.data.type === 'mydiv') {
+			myp.innerHTML = e.data.data;
+		}
+	}
+</script>
+
+</body>
+</html>

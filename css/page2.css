@@ -15,8 +15,8 @@
             user-select: none; 
 }
 .item-container {
-    width: 288.5px;
-    height: 570.5px;
+    width: 232.4px;
+    height: 458px;
     background: #fefefe;
     margin: 0 20px;
     clip-path: polygon(
@@ -34,10 +34,10 @@
         position: relative;
         left: 4px;
         top: 4px;
-        width: 280.5px;
-        height: 562.5px;
+        width: 224.4px;
+        height: 450px;
 		clip-path: polygon(
-            7% 0%,    /* 左上 */
+        7% 0%,    /* 左上 */
         93% 0%,    /* 右上 */
         100% 7%,  /* 右中上 */
         100% 89%,  /* 右中下 */

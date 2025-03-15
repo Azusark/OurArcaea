@@ -35,6 +35,7 @@
   overflow: hidden; /* 防止内容溢出 */
   display:block;
   z-index: 90;
+  border: none;
 }
 .my_overlay{
   position: fixed;
