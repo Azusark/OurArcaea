@@ -146,15 +146,34 @@ buttons.forEach((button, index) => {
     const { default: defaultImage, hover: hoverImage } = buttonImages[index];
     // 添加鼠标悬停事件监听器
     button.addEventListener('mouseenter', () => {
-      console.log('鼠标进入', index);
       button.setAttribute('xlink:href', hoverImage); // 切换到悬停图片
     });
     // 添加鼠标离开事件监听器
     button.addEventListener('mouseleave', () => {
-      console.log('鼠标离开', index);
       button.setAttribute('xlink:href', defaultImage); // 切换回默认图片
     });
   } else {
     console.error(`按钮 ${index} 没有对应的图片路径`);
   }
 });
+
+
+  document.getElementById('BackgroundImageBtn').addEventListener('click', function() {
+    var img = document.getElementById('backgroundImage');
+    var currentSrc = img.src;
+    var newSrc;
+    
+    // 检查当前图片的src并决定下一个图片
+    if (currentSrc.includes('Background1')) {
+      newSrc = '../icon/background/Background2.png';
+    } else if (currentSrc.includes('Background2')) {
+      newSrc = '../icon/background/Background3.png';
+    } else if (currentSrc.includes('Background3')) {
+      newSrc = '../icon/background/Background1.png';
+    } else {
+      newSrc = '../icon/background/Background1.png';
+    }
+    
+    img.src = newSrc;
+  });
+

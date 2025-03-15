@@ -57,19 +57,33 @@
 .custom-btn:hover {
     fill: rgba(120, 46, 160, 0.667); 
   }
+
 .moving-bg {
-  animation: backgroundScroll 20s linear infinite;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 200%;
-  z-index: -1;
-  opacity: 1;
-  user-select: none; 
-  -webkit-user-drag: none;
-  pointer-events: none;
-}
+    animation: backgroundScroll 30s ease-in-out infinite alternate;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 300%;
+    z-index: -1;
+    opacity: 1;
+    user-select: none; 
+    -webkit-user-drag: none;
+    pointer-events: none;
+  }
+  
+@keyframes backgroundScroll {
+    0% {
+      transform: translateY(0);
+    }
+
+    100% {
+      transform: translateY(-50%);
+    }
+  }
+
+
+
 .half{
   position: fixed;
   left: 40%;
@@ -105,16 +119,6 @@
 }
 
 
-
-
-@keyframes backgroundScroll {
-  from {
-    transform: translateY(0);
-  }
-  to {
-    transform: translateY(-50%);
-  }
-}
 svg text {
   -webkit-user-select: none;
   -moz-user-select: none;
