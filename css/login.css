@@ -2,10 +2,10 @@
 	font-family: 'myFont';
 	src: url('../fonts/HFUNCP.TTF') format('truetype');
   }
-  @font-face {
+@font-face {
 	font-family: 'deyihei';
 	src: url('../fonts/SmileySans-Oblique-2.ttf') format('truetype');
-  }
+}
 p{
 	font-family: 'myFont';
 	z-index: 20;

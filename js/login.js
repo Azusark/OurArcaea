@@ -34,3 +34,22 @@ channel.onmessage = function(e) {
 	  console.log('LoginImageMove2 已触发');
 	};
 };
+//按钮逻辑大全
+const btn1 = document.getElementById('login-after');
+const btn2 = document.getElementById('login-before');
+const btn3 = document.getElementById('loginGame');
+const btn4 = document.getElementById('registerGame');
+const btn5 = document.getElementById('myRegisterItem');
+const btn6 = document.getElementById('registerAccount');
+const btn7 = document.getElementById('myLoginItem');
+const btn8 = document.getElementById('loginAccount');
+btn3.addEventListener('click', function() {
+	console.log('loginGame 已触发');
+	btn2.style.display = 'none';
+	btn7.style.display = 'block';
+});
+btn8.addEventListener('click', function() {
+	console.log('loginAccount 已触发');
+	btn7.style.display = 'none';
+	btn1.style.display = 'block';
+});

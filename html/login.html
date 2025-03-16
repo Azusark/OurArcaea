@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" type="text/css" href="..\css\login.css">
     <title>Login Page</title>
 </head>
 <body>
@@ -17,7 +18,152 @@
                transition: left 0.5s ease, opacity 0.5s ease;z-index:5;" 
         id="myImg2">
 
-		<script type="text/javascript" src="../js/login.js"></script>
+        <p style="color: azure; font-size: 100px; 
+	position: absolute; top: 30px;left:220px">NetWork </p>
+	<p style="color: azure; font-size: 60px; 
+	position: absolute; top: 150px;left:100px">♟ ————————</p>
+    <div id="loginButtonContainer"style=" position: absolute; top: 300px;left:100px;z-index:15;">
+        <!-- 登陆后界面 -->
+        <svg id="login-after"width="1000" height="800" display="none">
+            <defs>
+                <clipPath id="myClipPath1">
+                    <path 
+                    d="M 56 76 L 84 39.2 L 396 39.2 L 423.2 77.6 L 410.4 99.2 L 68.8 98.4 Z"
+                  />
+                </clipPath>
+                <clipPath id="myClipPath2">
+                    <path 
+                      d="M 56 196 L 84 159.2 L 396 159.2 L 423.2 197.6 L 410.4 219.2 L 68.8 218.4 Z"
+                    />
+                </clipPath>
+                <clipPath id="myClipPath3">
+                    <path 
+                      d="M 56 316 L 84 279.2 L 396 279.2 L 423.2 317.6 L 410.4 339.2 L 68.8 338.4 Z"
+                    />
+                </clipPath>
+              </defs>
+            <image href="../icon/login/button1.png"
+            x="50" y="-30" width="380" height="200" 
+            clip-path="url(#myClipPath1)"/>
+            <image href="../icon/login/button1.png"
+            x="50" y="90" width="380" height="200" 
+            clip-path="url(#myClipPath2)"/>
+            <image href="../icon/login/button1.png"
+            x="50" y="210" width="380" height="200" 
+            clip-path="url(#myClipPath3)"/>
+            <path 
+            d="M 56 76 L 84 39.2 L 396 39.2 L 423.2 77.6 L 410.4 99.2 L 68.8 98.4 Z"
+            fill="none" stroke="Azure" stroke-width="3"/>
+            <path 
+            d="M 56 196 L 84 159.2 L 396 159.2 L 423.2 197.6 L 410.4 219.2 L 68.8 218.4 Z"
+            fill="none" stroke="Azure" stroke-width="3"/>
+            <path 
+            d="M 56 316 L 84 279.2 L 396 279.2 L 423.2 317.6 L 410.4 339.2 L 68.8 338.4 Z"
+            fill="none" stroke="Azure" stroke-width="3"/>
+            <text letter-spacing="35" font-size="40"fill="Azure"
+            x="180" y="85"pointer-events="none" user-select="none">设置</text>
+            <text letter-spacing="35" font-size="40"fill="Azure"
+            x="180" y="205"pointer-events="none" user-select="none">档案</text>
+            <text letter-spacing="35" font-size="40"fill="Azure"
+            x="145" y="325"pointer-events="none" user-select="none">兑换码</text>
+        </svg>
+        <!-- 登陆前界面 -->
+        <svg id="login-before"width="1000" height="800"display="block">
+            <defs>
+                <clipPath id="myClipPath1">
+                    <path 
+                    d="M 56 76 L 84 39.2 L 396 39.2 L 423.2 77.6 L 410.4 99.2 L 68.8 98.4 Z"
+                  />
+                </clipPath>
+                <clipPath id="myClipPath2">
+                    <path 
+                      d="M 56 196 L 84 159.2 L 396 159.2 L 423.2 197.6 L 410.4 219.2 L 68.8 218.4 Z"
+                    />
+                </clipPath>
+              </defs>
+            <image id="loginGame"href="../icon/login/button1.png"
+            x="50" y="-30" width="380" height="200" 
+            clip-path="url(#myClipPath1)"/>
+            <image id="registerGame"href="../icon/login/button1.png"
+            x="50" y="90" width="380" height="200" 
+            clip-path="url(#myClipPath2)"/>
+            <path 
+            d="M 56 76 L 84 39.2 L 396 39.2 L 423.2 77.6 L 410.4 99.2 L 68.8 98.4 Z"
+            fill="none" stroke="Azure" stroke-width="3"/>
+            <path 
+            d="M 56 196 L 84 159.2 L 396 159.2 L 423.2 197.6 L 410.4 219.2 L 68.8 218.4 Z"
+            fill="none" stroke="Azure" stroke-width="3"/>
+            <text letter-spacing="35" font-size="40"fill="Azure"
+            x="180" y="85"pointer-events="none" user-select="none">登录</text>
+            <text letter-spacing="35" font-size="40"fill="Azure"
+            x="180" y="205"pointer-events="none" user-select="none">注册</text>
+        </svg>
+        <!-- 注册界面 -->
+        <div>
+            <svg id="myRegisterItem" width="1000" height="800" display="none">
+                <defs>
+                    <clipPath id="myClipPath1">
+                        <path 
+                        d="M 56 316 L 84 279.2 L 396 279.2 L 423.2 317.6 L 410.4 339.2 L 68.8 338.4 Z"
+                      />
+                    </clipPath>
+                  </defs>
+                <image id="registerAccount"href="../icon/login/button1.png"
+                x="50" y="210" width="380" height="200" 
+                clip-path="url(#myClipPath1)"/>
+                <path 
+                d="M  56 316 L 84 279.2 L 396 279.2 L 423.2 317.6 L 410.4 339.2 L 68.8 338.4 Z"
+                fill="none" stroke="Azure" stroke-width="3"/>
+                <text  font-size="40"fill="Azure" opacity="0.5"
+                x="60" y="90"pointer-events="none" user-select="none">♜ ———————</text>
+                <text  font-size="40"fill="Azure" opacity="0.5"
+                x="60" y="190"pointer-events="none" user-select="none">♞ ———————</text>
+                <text letter-spacing="35" font-size="40"fill="Azure"
+                x="110" y="325"pointer-events="none" user-select="none">注册账号</text>
+            </svg>
+            <input type="text" id="registerInput1" maxlength="8" placeholder=""
+            style="position: absolute;top: 20px;left: 110px;width: 300px;height: 50px;
+            border: none;background: none;color: azure;outline: none;display: none;
+            letter-spacing:10px;font-size: 40px;padding-left: 10px;"/>
+            <input type="text" id="registerInput2" maxlength="8" placeholder=""
+            style="position: absolute;top: 120px;left: 110px;width: 300px;height: 50px;
+            border: none;background: none;color: azure;outline: none;display: none;
+            letter-spacing:10px;font-size: 40px;padding-left: 10px;"/>
+        </div>
+        <!-- 登录界面 -->
+        <div >
+            <svg  id="myLoginItem" width="1000" height="800" display="none">
+                <defs>
+                    <clipPath id="myClipPath1">
+                        <path 
+                        d="M 56 316 L 84 279.2 L 396 279.2 L 423.2 317.6 L 410.4 339.2 L 68.8 338.4 Z"
+                      />
+                    </clipPath>
+                  </defs>
+                <image id="loginAccount"href="../icon/login/button1.png"
+                x="50" y="210" width="380" height="200" 
+                clip-path="url(#myClipPath1)"/>
+                <path 
+                d="M  56 316 L 84 279.2 L 396 279.2 L 423.2 317.6 L 410.4 339.2 L 68.8 338.4 Z"
+                fill="none" stroke="Azure" stroke-width="3"/>
+                <text  font-size="40"fill="Azure" opacity="0.5"
+                x="60" y="90"pointer-events="none" user-select="none">♜ ———————</text>
+                <text  font-size="40"fill="Azure" opacity="0.5"
+                x="60" y="190"pointer-events="none" user-select="none">♞ ———————</text>
+                <text letter-spacing="35" font-size="40"fill="Azure"
+                x="110" y="325"pointer-events="none" user-select="none">登录游戏</text>
+            </svg>
+            <input type="text" id="loginInput1" maxlength="8" placeholder=""
+            style="position: absolute;top: 20px;left: 110px;width: 300px;height: 50px;
+            border: none;background: none;color: black;outline: none;display: none;
+            letter-spacing:10px;font-size: 40px;padding-left: 10px;"/>
+            <input type="text" id="loginInput2" maxlength="8" placeholder=""
+            style="position: absolute;top: 120px;left: 110px;width: 300px;height: 50px;
+            border: none;background: none;color: black;outline: none;display: none;
+            letter-spacing:10px;font-size: 40px;padding-left: 10px;"/>
+        </div>
         
+    </div>
+    <script type="text/javascript" src="../js/login.js"></script>
 </body>
 </html>
