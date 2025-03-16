@@ -1,4 +1,5 @@
-const channel = new BroadcastChannel('AnimationChannel');
+const channel1 = new BroadcastChannel('AnimationChannel');
+const channel2 = new BroadcastChannel('TopContainerChannel');
 let IsCanEscape = false;
 //遮罩层
 const mask = document.getElementById('myOverlay');
@@ -8,11 +9,10 @@ function topContainer() {
     fetch('top_container.html')
         .then(response => response.text())
         .then(html => {
-            myTopContainer.innerHTML = html;
+            myTopContainer.srcdoc = html;
         })
         .catch(error => {
             console.error('加载侧栏失败:', error);
-            sidebarContainer.innerHTML = '侧栏加载失败';
         });
 }
 topContainer();
@@ -71,7 +71,7 @@ document.addEventListener('keydown', function(event) {
 });
 //开始游戏-进入选关界面
 document.getElementById('myBtn_StartGame').addEventListener('click', function() {
-    channel.postMessage({ type: 'PlayAnimation' });
+    channel1.postMessage({ type: 'PlayAnimation' });
     console.log('开始游戏');
     window.dispatchEvent(new CustomEvent('titleChange'));
     setTimeout(() => {
@@ -108,25 +108,16 @@ function fadeVolume(audio, from, to, duration) {
     updateVolume();
 }
 
-        // 定义初始图片编号
-    let currentImageIndex = 1;
-    // 定义图片总数
-    const totalImages = 7;
-
-    // 获取图片元素 
-    const partnerImage = document.getElementById('partnerImage');
-    // 获取按钮元素
-    const PartnerChangeBtn = document.getElementById('PartnerChangeBtn');
-    // 为按钮添加点击事件监听器
-    PartnerChangeBtn.addEventListener('click', () => {
-    // 更新图片编号，如果达到上限则重置为1
+ //切换角色立绘
+let currentImageIndex = 1;
+const totalImages = 7;
+const partnerImage = document.getElementById('partnerImage');
+const PartnerChangeBtn = document.getElementById('PartnerChangeBtn');
+PartnerChangeBtn.addEventListener('click', () => {
     currentImageIndex = (currentImageIndex % totalImages) + 1;
-
     // 更新图片的src属性
     partnerImage.src = `../icon/partner/partner${currentImageIndex}.png`;
-    window.dispatchEvent(new CustomEvent('partnerChange', {
-        detail: currentImageIndex // 数据存放在 detail 中
-    }));
+    channel2.postMessage({ type: 'PartnerChange', value: currentImageIndex });
 });
 const preloadImages = [];
 for (let i = 1; i <= totalImages; i++) {
@@ -153,12 +144,10 @@ buttons.forEach((button, index) => {
   // 检查是否有对应的图片路径
   if (buttonImages[index]) {
     const { default: defaultImage, hover: hoverImage } = buttonImages[index];
-
     // 添加鼠标悬停事件监听器
     button.addEventListener('mouseenter', () => {
       button.setAttribute('xlink:href', hoverImage); // 切换到悬停图片
     });
-
     // 添加鼠标离开事件监听器
     button.addEventListener('mouseleave', () => {
       button.setAttribute('xlink:href', defaultImage); // 切换回默认图片

@@ -22,14 +22,6 @@ function playImgAnimation2(){
 	}, 200);
 	},30);
 };
-// //接收信号，二段平移
-// const channel = new BroadcastChannel('AnimationChannel');
-// channel.onmessage = function(e) {
-//   if (e.data.type === 'LoginImageMove') {
-// 	playImgAnimation();
-// 	console.log('LoginImageMove2 已触发');
-//   };
-// }
 playImgAnimation1();
 window.addEventListener('LoginImageMove1', () => {
     playImgAnimation1();
