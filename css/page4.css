@@ -1,0 +1,108 @@
+
+.custom-button {
+    position: fixed;
+    left: -70px; /* 水平位置 */
+    top: 783px; /* 垂直位置 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: transparent; /* 透明背景 */
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease; /* 添加过渡效果 */
+}
+
+
+
+.hover-image {
+    width: 100%; /* 图标宽度 */
+    height: 100%; /* 图标高度 */
+    margin-right: -150px; /* 图标与文字的间距 */
+    margin-top: 8px;
+    transition: opacity 0.3s ease; /* 添加过渡效果 */
+}  
+
+.button-text {
+    font-size: 24px;
+    color: rgb(0, 0, 0); /* 文字颜色 */
+    font-weight: bold;
+}
+
+
+
+.level-container {
+    display: flex;
+    justify-content: right;
+    align-items: left;
+    background-image: url('../icon/songselect/levelbg.png');
+    background-size: 90% 90%;
+    background-repeat: no-repeat;
+    width: 500px;
+    height: 150px;
+    padding: 20px;
+
+  }
+  
+  .level-item {
+    position: relative;
+    cursor: pointer;
+    width: 200px;
+    height: 100px;
+    transition: transform 0.2s ease;
+    top: 0px;
+    margin: -20px;
+    left: -40px; 
+    outline: none; /* 移除焦点轮廓 */
+  }
+  
+  .level-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 100%;
+  }
+  
+  /* 单独调整第一个图标 */
+  .level-item:nth-child(1) .level-icon {
+    width: 125%; /* 调整宽度 */
+    height: 100%; /* 调整高度 */
+    left: -30px; /* 调整水平位置 */
+  }
+  
+  /* 单独调整第2个图标 */
+  .level-item:nth-child(2) .level-icon {
+    width: 90%; /* 调整宽度 */
+    height: 100%; /* 调整高度 */
+    left: 18px; /* 调整水平位置 */
+  }
+  
+  .level-selected {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+  }
+  
+  .level-item.selected .level-selected {
+    display: block;
+  }
+  
+  /* 单独调整第一个选中图标 */
+  .level-item:nth-child(1).selected .level-selected {
+    width: 125%; /* 调整宽度 */
+    height: 100%; /* 调整高度 */
+    left: -30px; /* 调整水平位置 */
+  }
+  
+  .level-item:nth-child(2).selected .level-selected {
+    width: 90%; /* 调整宽度 */
+    height: 100%; /* 调整高度 */
+    left: 18px; /* 调整水平位置 */
+  }
+  
+
