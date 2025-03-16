@@ -104,7 +104,7 @@ z-index: 90;
     margin-right: -150px; /* 图标与文字的间距 */
     margin-top: 8px;
     transition: opacity 0.3s ease; /* 添加过渡效果 */
-}
+}  
 
 .button-text {
     font-size: 24px;

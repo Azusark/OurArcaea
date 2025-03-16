@@ -1,0 +1,30 @@
+
+.custom-button {
+    position: fixed;
+    left: -70px; /* 水平位置 */
+    top: 783px; /* 垂直位置 */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    background-color: transparent; /* 透明背景 */
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease; /* 添加过渡效果 */
+}
+
+
+
+.hover-image {
+    width: 100%; /* 图标宽度 */
+    height: 100%; /* 图标高度 */
+    margin-right: -150px; /* 图标与文字的间距 */
+    margin-top: 8px;
+    transition: opacity 0.3s ease; /* 添加过渡效果 */
+}  
+
+.button-text {
+    font-size: 24px;
+    color: rgb(0, 0, 0); /* 文字颜色 */
+    font-weight: bold;
+}
