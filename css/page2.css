@@ -18,29 +18,12 @@
 
 
 .item-container {
-    width: 232.4px;
-    height: 458px;
+    width: 288.5px;
+    height: 570.5px;
     background: #fefefe;
     margin: 0 20px;
     transition: outline 0.3s ease; /* 添加过渡效果 */
     clip-path: polygon(
-    7% 0%,    /* 左上 */
-    93% 0%,    /* 右上 */
-    100% 7%,  /* 右中上 */
-    100% 89%,  /* 右中下 */
-    89% 100%,  /* 右下 */
-    11% 100%,  /* 左下 */
-    0% 89%,    /* 左中下 */
-    0% 7%     /* 左中上 */
-    );
-}
-.item {
-        position: relative;
-        left: 4px;
-        top: 4px;
-        width: 224.4px;
-        height: 450px;
-		clip-path: polygon(
         7% 0%,    /* 左上 */
         93% 0%,    /* 右上 */
         100% 7%,  /* 右中上 */

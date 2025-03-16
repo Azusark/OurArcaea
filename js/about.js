@@ -1,4 +1,4 @@
-const channel = new BroadcastChannel('LoginChannel');
+const channel = new BroadcastChannel('AboutChannel');
 function playImgAnimation1(){
 	const img1 = document.getElementById('myImg1');
 	const img2 = document.getElementById('myImg2');
@@ -25,12 +25,12 @@ function playImgAnimation2(){
 };
 
 channel.onmessage = function(e) {
-	if (e.data.type === 'LoginImageMove1') {
+	if (e.data.type === 'AboutImageMove1') {
 	  playImgAnimation1();
-	  console.log('LoginImageMove1 已触发');
+	  console.log('AboutImageMove1 已触发');
 	};
-	if (e.data.type === 'LoginImageMove2') {
+	if (e.data.type === 'AboutImageMove2') {
 	  playImgAnimation2();
-	  console.log('LoginImageMove2 已触发');
+	  console.log('AboutImageMove2 已触发');
 	};
 };

@@ -39,3 +39,15 @@
 	height: 5px;
 	background: azure;
 }
+@font-face {
+	font-family: 'myFont';
+	src: url('../fonts/HFUNCP.TTF') format('truetype');
+  }
+p{
+	font-family: 'myFont';
+	z-index: 20;
+}
+a{
+	font-family: 'myFont';
+	z-index: 20;
+}

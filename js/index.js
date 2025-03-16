@@ -1,5 +1,7 @@
 const channel1 = new BroadcastChannel('AnimationChannel');
 const channel2 = new BroadcastChannel('TopContainerChannel');
+const channel3 = new BroadcastChannel('LoginChannel');
+const channel4 = new BroadcastChannel('AboutChannel');
 let IsCanEscape = false;
 //遮罩层
 const mask = document.getElementById('myOverlay');
@@ -17,58 +19,79 @@ function topContainer() {
 }
 topContainer();
 // 动态加载侧栏
-function loadSidebar() {
-    const sidebarContainer = document.getElementById('myRigister');
-    fetch('register.html')
+function loadAboutContainer() {
+    const myAbout = document.getElementById('myAbout');
+    fetch('about.html')
         .then(response => response.text())
         .then(html => {
-            sidebarContainer.innerHTML = html;
-            // 通过修改容器宽度触发过渡动画
-            setTimeout(() => {
-                sidebarContainer.style.width = "600px";
-                mask.style.display = 'block';
-            }, 10); // 微小的延迟确保DOM更新
+            myAbout.srcdoc = html;
         })
         .catch(error => {
             console.error('加载侧栏失败:', error);
-            sidebarContainer.innerHTML = '侧栏加载失败';
         });
 }
-//加载出登陆菜单
-function loadLogin() {
+loadAboutContainer();
+function loadAbout() {
+  const myAbout = document.getElementById('myAbout');
+  setTimeout(() => {
+    myAbout.style.display= "block";
+    mask.style.display = 'block';
+    channel4.postMessage({ type: 'AboutImageMove1' });
+    console.log('加载about菜单');
+    setTimeout(() => {
+        IsCanEscape = true;
+    }, 495);
+}, 10);
+}
+//加载出登陆菜单容器
+function loadLoginContainer() {
     const myLogin = document.getElementById('myLogin');
     fetch('login.html')
         .then(response => response.text())
         .then(html => {
-            myLogin.innerHTML = html;
-            setTimeout(() => {
-                myLogin.style.display= "block";
-                mask.style.display = 'block';
-                window.dispatchEvent(new CustomEvent('LoginImageMove1'));
-                console.log('加载登陆菜单');
-                setTimeout(() => {
-                    IsCanEscape = true;
-                }, 990);
-            }, 10);
+            myLogin.srcdoc = html;
         })
         .catch(error => {
             console.error('加载侧栏失败:', error);
-            myLogin.innerHTML = '侧栏加载失败';
         });
-
+}
+loadLoginContainer();
+//加载出登陆菜单
+function loadLogin() {
+    const myLogin = document.getElementById('myLogin');
+    setTimeout(() => {
+      myLogin.style.display= "block";
+      mask.style.display = 'block';
+      channel3.postMessage({ type: 'LoginImageMove1' });
+      console.log('加载登陆菜单');
+      setTimeout(() => {
+          IsCanEscape = true;
+      }, 495);
+  }, 10);
 }
 //点击ESC关闭侧栏
 document.addEventListener('keydown', function(event) {
     if (event.key == "Escape" && IsCanEscape==true) {
         IsCanEscape = false;
-        document.getElementById('myRigister').style.width = "0";
-        window.dispatchEvent(new CustomEvent('LoginImageMove2'));
+        channel3.postMessage({ type: 'LoginImageMove2' });
+        channel4.postMessage({ type: 'AboutImageMove2' });
         setTimeout(() => {
             document.getElementById('myLogin').style.display = "none";
-        }, 1000);
+            document.getElementById('myAbout').style.display = "none";
+        }, 495);
         mask.style.display = 'none';
     }
 });
+// 当界面重新获得焦点时，重置 IsCanEscape
+// 还需修改，改为点击注入的界面也能重置
+window.onfocus = function() {
+  if (IsCanEscape == false) {
+    IsCanEscape = true;
+  }
+  else {
+    IsCanEscape = false;
+  }
+};
 //开始游戏-进入选关界面
 document.getElementById('myBtn_StartGame').addEventListener('click', function() {
     channel1.postMessage({ type: 'PlayAnimation' });
@@ -80,7 +103,7 @@ document.getElementById('myBtn_StartGame').addEventListener('click', function() 
         }, 1600);
 });
 // 绑定按钮点击事件
-document.getElementById('myBtn_OrginLogin').addEventListener('click', loadSidebar);
+document.getElementById('myBtn_About').addEventListener('click', loadAbout);
 document.getElementById('myBtn_Login').addEventListener('click', loadLogin);
 
 // 音乐播放配置
