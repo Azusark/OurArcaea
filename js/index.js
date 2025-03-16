@@ -99,7 +99,7 @@ document.getElementById('myBtn_StartGame').addEventListener('click', function() 
     window.dispatchEvent(new CustomEvent('titleChange'));
     setTimeout(() => {
         //跳转到其他界面
-        window.location.href = "../html/page2.html";
+        window.location.href = "../html/page4.html";
         }, 1600);
 });
 // 绑定按钮点击事件
