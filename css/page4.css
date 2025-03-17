@@ -41,6 +41,9 @@
     width: 500px;
     height: 150px;
     padding: 20px;
+    left: -2%;
+    position: absolute;
+    transform: translateY(-20%);
 
   }
   
