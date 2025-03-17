@@ -106,3 +106,72 @@
   }
   
 
+/* 按钮栏容器 */
+.button-bar {
+  position: fixed;
+  right: -170px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 10px; /* 按钮之间的间距 */
+  padding: 70px;
+  z-index: 1000;
+}
+
+/* 按钮项 */
+.button-item {
+  position: relative;
+  width: 600px; /* 默认宽度 */
+  height: 120px; /* 默认高度 */
+  cursor: pointer;
+  transition: width 0.3s ease, height 0.3s ease;
+  
+}
+
+/* 默认按钮图标 */
+.button-icon {
+  width: 600px;
+  height: 120px;
+  object-fit: cover;
+}
+
+/* 选中状态按钮图标 */
+.button-selected {
+  display: none;
+  position: absolute;
+  top: -13px;
+  left: -35px;
+  width: 90px;px;
+  height: 145px;
+  object-fit:fill
+}
+
+/* 标志图片 */
+.button-marker {
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  height: 70%;
+  z-index: 10;
+}
+
+/* 选中状态的按钮 */
+.button-item.selected {
+  width: 700px; /* 选中时宽度增加 */
+  height: 120px; /* 选中时高度增加 */
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5); /* 阴影效果 */
+}
+
+.button-item.selected .button-selected,
+.button-item.selected .button-marker {
+  display: block; /* 显示选中图标和标志 */
+}
+
+/* 被选中按钮下方的按钮 */
+.button-item.selected ~ .button-item {
+  width: 700px; /* 下方按钮伸长 */
+  
+}

@@ -58,3 +58,19 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
   });
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const buttonItems = document.querySelectorAll('.button-item');
+  
+    buttonItems.forEach(item => {
+      item.addEventListener('click', function () {
+        // 移除所有按钮的选中状态
+        buttonItems.forEach(el => el.classList.remove('selected'));
+  
+        // 为当前点击的按钮添加选中状态
+        this.classList.add('selected');
+      });
+    });
+  });
+
+  
