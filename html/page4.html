@@ -14,21 +14,6 @@
     style="position: absolute;top: 80px;width: 99%;">
         <div class="scroll-content" id="scrollContent">  
 
-			<!-- 
-			<image src="../icon/album/story.png"style=
-				"position: relative;
-				left: 4px;
-				top: 90px;
-				width: auto;
-				height: 250px;
-				-webkit-user-drag: none;
-				flex-shrink: 0;
-				display: flex;
-				align-items: center;
-				justify-content: center;">
-        </div>
-    </div>  -->
-
 	<!-- 返回按钮 -->
 	<button id="backbutton" class="custom-button">
     <img src="../icon/backbutton.png" alt="按钮图标" class="hover-image">
@@ -55,25 +40,38 @@
           <img src="../icon/songselect/difficulty_selector_2_selected.png" alt="Level 3 Selected" class="level-selected">
         </div>
       </div>
-
+      
+      <div class="left-panel">
+        <img id="left-image" src="" alt="Left Image" class="left-image">
+        <div id="left-name" class="left-name"></div>
+      </div>
+      
       <div class="button-bar">
-        <div class="button-item" data-index="1" data-bg="../icon/background/bg1.jpg">
+        <div class="button-item" data-index="1" data-bg="../icon/background/bg1.jpg" data-image="../icon/" data-name="Image 1">
           <img src="../icon/songselect/song_cell_right_selected.png" alt="Button 1" class="button-icon">
           <img src="../icon/songselect/song_cell_selected_piece.png" alt="Button 1 Selected" class="button-selected"> 
           <img src="../icon/songselect/start.png" alt="Button 1 Marker" class="button-marker">
+          
+
         </div>
-        <div class="button-item" data-index="2" data-bg="../icon/background/bg2.jpg">
+        <div class="button-item" data-index="2" data-bg="../icon/background/bg2.jpg" data-image="../icon/left/left2.jpg" data-name="Image 2">
           <img src="../icon/songselect/song_cell_right_beyond_selected.png" alt="Button 2" class="button-icon">
           <img src="../icon/songselect/song_cell_selected_piece_beyond.png" alt="Button 2 Selected" class="button-selected">
           <img src="../icon/songselect/start.png" alt="Button 2 Marker" class="button-marker">
+          
         </div>
         <!-- 其他按钮 -->
-        <div class="button-item" data-index="10" data-bg="../icon/background/bg3.jpg">
+        <div class="button-item" data-index="3" data-bg="../icon/background/bg3.jpg" data-image="../icon/left/left3.jpg" data-name="Image 10">
           <img src="../icon/songselect/song_cell_right_beyond_selected.png" alt="Button 10" class="button-icon">
           <img src="../icon/songselect/song_cell_selected_piece_beyond.png" alt="Button 10 Selected" class="button-selected">
           <img src="../icon/songselect/start.png" alt="Button 10 Marker" class="button-marker">
+          
         </div>
       </div>
 
+      <img src="../icon/songs/1.jpg" alt="曲绘" class="songs" id="song1">
+      <img src="../icon/songs/2.jpg" alt="曲绘" class="songs" id="song2">
+      <img src="../icon/songs/3.jpg" alt="曲绘" class="songs" id="song3">
+      
 </body>
 </html>
