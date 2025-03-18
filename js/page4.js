@@ -59,11 +59,11 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
 
-  
   document.addEventListener('DOMContentLoaded', function () {
     const buttonItems = document.querySelectorAll('.button-item');
     const body = document.body; // 获取 body 元素，用于设置背景图片
     const fixedBackground = document.getElementById('fixed-background'); // 获取固定的背景图片
+    let currentAudio = null; // 用于存储当前播放的音频对象
   
     buttonItems.forEach(item => {
       item.addEventListener('click', function () {
@@ -100,11 +100,25 @@ document.addEventListener('DOMContentLoaded', function () {
         if (songElement) {
           songElement.style.display = 'block'; // 或者 'flex'，根据你的布局需求
         }
+  
+        // 获取当前按钮的音乐文件路径
+        const audioSrc = this.getAttribute('data-audio');
+  
+        // 如果当前有音乐正在播放，停止它
+        if (currentAudio) {
+          currentAudio.pause();
+          currentAudio.currentTime = 0; // 重置播放进度
+        }
+  
+        // 创建新的音频对象并播放
+        currentAudio = new Audio(audioSrc);
+        currentAudio.loop = true; // 设置循环播放
+        currentAudio.play();
       });
     });
   
-    // 默认加载第一个按钮的背景图片
-    const defaultBg = '../icon/background/BlackBackground.png';
+    // 默认加载景图片
+    const defaultBg = '../icon/background/bg1.png';
     body.style.backgroundImage = `url(${defaultBg})`;
     body.style.backgroundPosition = 'center 0%'; // 水平居中，垂直方向偏移 40%
     body.style.backgroundSize = 'cover'; // 保持背景图片比例，同时覆盖整个背景区域
@@ -118,5 +132,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const firstSongElement = document.getElementById('song1');
     if (firstSongElement) {
       firstSongElement.style.display = 'block'; // 或者 'flex'，根据你的布局需求
+    }
+  
+    // 默认播放第一个按钮的音乐
+    const firstButton = document.querySelector('.button-item');
+    if (firstButton) {
+      const firstAudioSrc = firstButton.getAttribute('data-audio');
+      currentAudio = new Audio(firstAudioSrc);
+      currentAudio.loop = true; // 设置循环播放
+      currentAudio.play();
     }
   });
