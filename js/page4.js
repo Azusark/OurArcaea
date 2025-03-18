@@ -1,17 +1,17 @@
 const channel = new BroadcastChannel('SwitchWithFading');
-//顶栏
-function topContainer() {
-  const myTopContainer = document.getElementById('myTopContainer');
-  fetch('top_container.html')
-      .then(response => response.text())
-      .then(html => {
-          myTopContainer.srcdoc = html;
-      })
-      .catch(error => {
-          console.error('加载侧栏失败:', error);
-      });
-}
-topContainer();
+// //顶栏
+// function topContainer() {
+//   const myTopContainer = document.getElementById('myTopContainer');
+//   fetch('top_container.html')
+//       .then(response => response.text())
+//       .then(html => {
+//           myTopContainer.srcdoc = html;
+//       })
+//       .catch(error => {
+//           console.error('加载侧栏失败:', error);
+//       });
+// }
+// topContainer();
   // 获取按钮和图片元素
   const backButton = document.getElementById('backbutton');
   const hoverImage = backButton.querySelector('.hover-image');

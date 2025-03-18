@@ -121,6 +121,7 @@ z-index: 90;
     display:block;
     z-index: 90;
     border: none;
+    pointer-events: none;
   }
   .mypage4{
     position: fixed;
@@ -132,4 +133,5 @@ z-index: 90;
     display:block;
     z-index: 90;
     border: none;
+    
 }
