@@ -58,6 +58,8 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+
+  
   document.addEventListener('DOMContentLoaded', function () {
     const buttonItems = document.querySelectorAll('.button-item');
     const body = document.body; // 获取 body 元素，用于设置背景图片
@@ -77,22 +79,44 @@ document.addEventListener('DOMContentLoaded', function () {
   
         // 设置 body 的背景图片
         body.style.backgroundImage = `url(${bgImage})`;
-        body.style.backgroundImage = `url(${bgImage})`;
         body.style.backgroundPosition = 'center 0%'; // 水平居中，垂直方向偏移 40%
         body.style.backgroundSize = 'cover'; // 保持背景图片比例，同时覆盖整个背景区域
-       body.style.width = '100%';
-      body.style.height = '100%';
+        body.style.width = '100%';
+        body.style.height = '100%';
+  
         // 隐藏固定的背景图片
         fixedBackground.style.display = 'none';
+  
+        // 获取当前按钮的索引
+        const index = this.getAttribute('data-index');
+  
+        // 隐藏所有 songi 元素
+        document.querySelectorAll('[id^="song"]').forEach(el => {
+          el.style.display = 'none';
+        });
+  
+        // 显示当前按钮对应的 songi 元素
+        const songElement = document.getElementById(`song${index}`);
+        if (songElement) {
+          songElement.style.display = 'block'; // 或者 'flex'，根据你的布局需求
+        }
       });
     });
   
     // 默认加载第一个按钮的背景图片
-    
+    const defaultBg = '../icon/background/BlackBackground.png';
     body.style.backgroundImage = `url(${defaultBg})`;
-    body.style.backgroundSize = 'cover';
-    body.style.backgroundPosition = 'center';
+    body.style.backgroundPosition = 'center 0%'; // 水平居中，垂直方向偏移 40%
+    body.style.backgroundSize = 'cover'; // 保持背景图片比例，同时覆盖整个背景区域
+    body.style.width = '100%';
+    body.style.height = '100%';
   
     // 默认隐藏固定的背景图片
     fixedBackground.style.display = 'none';
+  
+    // 默认显示第一个 songi 元素
+    const firstSongElement = document.getElementById('song1');
+    if (firstSongElement) {
+      firstSongElement.style.display = 'block'; // 或者 'flex'，根据你的布局需求
+    }
   });
