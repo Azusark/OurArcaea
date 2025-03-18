@@ -1,14 +1,17 @@
-//返回主页
-document.getElementById('backbutton').addEventListener('click', function() {
-    channel.postMessage({ type: 'PlayAnimation' });
-    console.log('开始游戏');
-    setTimeout(() => {
-        //跳转到其他界面
-        window.location.href = "../html/index.html";
-        }, 1600);
-  });
-  
-  //返回按钮
+const channel = new BroadcastChannel('SwitchWithFading');
+//顶栏
+function topContainer() {
+  const myTopContainer = document.getElementById('myTopContainer');
+  fetch('top_container.html')
+      .then(response => response.text())
+      .then(html => {
+          myTopContainer.srcdoc = html;
+      })
+      .catch(error => {
+          console.error('加载侧栏失败:', error);
+      });
+}
+topContainer();
   // 获取按钮和图片元素
   const backButton = document.getElementById('backbutton');
   const hoverImage = backButton.querySelector('.hover-image');
@@ -28,15 +31,11 @@ document.getElementById('backbutton').addEventListener('click', function() {
   
   // 返回主页
   backButton.addEventListener('click', function() {
-      channel.postMessage({ type: 'PlayAnimation' });
-      console.log('开始游戏');
       setTimeout(() => {
           // 跳转到其他界面
-          window.location.href = "../html/index.html";
-      }, 1600);
+          channel.postMessage({type:'switchwithfading'});
+      }, 10);
   });
-
-
 
 // 默认选中第一个按钮
 document.addEventListener('DOMContentLoaded', function () {

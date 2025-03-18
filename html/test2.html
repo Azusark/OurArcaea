@@ -53,15 +53,11 @@
 }
 </style>
 
-<p id="myp">This is a test page two.</p>
+    <div style="display: none;">
+        <p>This is a test page.</p>
+        <input type="text" value="Click me"style="position: absolute;top:10%;left:20%;">
 <script>
-	const channel = new BroadcastChannel('myChannel');
-	const myp = document.getElementById('myp');
-	channel.onmessage = function(e) {
-		if (e.data.type === 'mydiv') {
-			myp.innerHTML = e.data.data;
-		}
-	}
+
 </script>
 
 </body>

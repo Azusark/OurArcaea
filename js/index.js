@@ -41,7 +41,7 @@ function loadAbout() {
     setTimeout(() => {
         IsCanEscape = true;
     }, 495);
-}, 10);
+}, 100);
 }
 //加载出登陆菜单容器
 function loadLoginContainer() {
@@ -67,7 +67,7 @@ function loadLogin() {
       setTimeout(() => {
           IsCanEscape = true;
       }, 495);
-  }, 10);
+  }, 100);
 }
 //点击ESC关闭侧栏
 document.addEventListener('keydown', function(event) {
@@ -99,7 +99,7 @@ document.getElementById('myBtn_StartGame').addEventListener('click', function() 
     window.dispatchEvent(new CustomEvent('titleChange'));
     setTimeout(() => {
         //跳转到其他界面
-        window.location.href = "../html/page4.html";
+        window.location.href = "../html/page2.html";
         }, 1600);
 });
 // 绑定按钮点击事件

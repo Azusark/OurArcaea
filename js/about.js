@@ -1,10 +1,12 @@
 const channel = new BroadcastChannel('AboutChannel');
+const aboutTextCont = document.getElementById('aboutContentContainer');
 function playImgAnimation1(){
 	const img1 = document.getElementById('myImg1');
 	const img2 = document.getElementById('myImg2');
 	setTimeout(() => {
 	img1.style.left = "0px";
-	img1.style.opacity = "1";	
+	img1.style.opacity = "1";
+	aboutTextCont.style.opacity = "1";
 	setTimeout(() => {	
 		img2.style.left = "495px";	
 		img2.style.opacity = "0.9";	
@@ -17,6 +19,7 @@ function playImgAnimation2(){
 	setTimeout(()=>{
 	img2.style.left = "100px";
 	img2.style.opacity = "0";
+	aboutTextCont.style.opacity = "0";
 	setTimeout(() => {
 		img1.style.left = "-200px";
 		img1.style.opacity = "0";

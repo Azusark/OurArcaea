@@ -1,20 +1,23 @@
+const channel1 = new BroadcastChannel('AnimationChannel');
+const channel2 = new BroadcastChannel('SwitchWithFading');
+//加载顶栏
 function topContainer() {
   const myTopContainer = document.getElementById('myTopContainer');
   fetch('top_container.html')
       .then(response => response.text())
       .then(html => {
-          myTopContainer.innerHTML = html;
+          myTopContainer.srcdoc = html;
       })
       .catch(error => {
           console.error('加载侧栏失败:', error);
-          sidebarContainer.innerHTML = '侧栏加载失败';
       });
 }
 topContainer();
 //滚动效果变量
-const channel = new BroadcastChannel('AnimationChannel');
 const container = document.getElementById('scrollContainer');
 const content = document.getElementById('scrollContent');
+const bigContainer = document.getElementById('bigContainer');
+const myPage4 = document.getElementById('myPage4');
 let isDown = false;
 let startX;
 let scrollLeft;
@@ -22,7 +25,18 @@ let velocity = 0;
 let lastTime = 0;
 let lastScroll = 0;
 let rafId;
-
+//加载page4
+function loadPage4() {
+  fetch('page4.html')
+      .then(response => response.text())
+      .then(html => {
+          myPage4.srcdoc = html;
+      })
+      .catch(error => {
+          console.error('加载侧栏失败:', error);
+      });
+}
+loadPage4();
 //加载专辑
 function loadAlbum() {
   var myAlbumsContainer = new Array();
@@ -34,14 +48,44 @@ function loadAlbum() {
     myAlbumsItem[i].src = "../icon/album/album" + i + ".png";
     console.log(myAlbumsItem[i].src);
     myAlbumsItem[i].className = 'item';
+    myAlbumsItem[i].id = "album" + i;
     myAlbumsContainer[i].appendChild(myAlbumsItem[i]);
     content.appendChild(myAlbumsContainer[i]);
   }
 }
-
-
-
 loadAlbum();
+//page2d淡出page4淡入
+function clickAlbumEnter() {
+  for (var i = 1; i <= 16; i++) {
+    const myAlbumsItem = document.getElementById("album" + i);
+    myAlbumsItem.addEventListener('click', function() {
+      console.log('点击专辑' + i);
+      setTimeout(() => {
+        bigContainer.style.opacity="0";
+        myPage4.style.opacity="1";
+        setTimeout(() => {
+            bigContainer.style.display="none";
+        },500);
+      }, 10);
+    });
+  }
+}
+//page2d淡R入page4淡出
+function clickAlbumBack() {
+  channel2.onmessage = function(e) {
+    if (e.data.type === 'switchwithfading') {
+      setTimeout(() => {
+        bigContainer.style.display="block";
+        setTimeout(() => {
+          bigContainer.style.opacity="1";
+          myPage4.style.opacity="0";
+        },10);
+      }, 10);
+    };
+  }
+}
+clickAlbumEnter();
+clickAlbumBack();
 // 滑动鼠标事件
 container.addEventListener('mousedown', (e) => {
   isDown = true;
@@ -144,8 +188,8 @@ backButton.addEventListener('mouseleave', () => {
 
 // 返回主页
 backButton.addEventListener('click', function() {
-    channel.postMessage({ type: 'PlayAnimation' });
-    console.log('开始游戏');
+    channel1.postMessage({ type: 'PlayAnimation' });
+    console.log('返回主页');
     setTimeout(() => {
         // 跳转到其他界面
         window.location.href = "../html/index.html";

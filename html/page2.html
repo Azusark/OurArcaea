@@ -5,16 +5,19 @@
 </head>
 <link rel="stylesheet" type="text/css" href="../css/page2.css">
 <link rel="stylesheet" type="text/css" href="../css/cssGrocery.css">
-<!-- 顶栏 -->
-<div class="my_top_container" id="myTopContainer"></div>
-<body>
+    <!-- 顶栏 -->
+	<iframe class="mypage4" scrolling="no" id="myPage4"
+	style="opacity: 0;transition: opacity 0.5s ease-in-out;display: block;z-index: inherit;"></iframe>
+	<iframe class="my_top_container" scrolling="no" id="myTopContainer"></iframe>
+<body >
 	<img src="../icon/background/BlackBackground.png" alt="背景图片"
-	style="position: fixed; left: 0; top: 0; width: 100% ;height:100%;;;z-index: -10;filter:blur(2px)">
-    <div class="scroll-container" id="scrollContainer"
-	style="position: absolute;top: 80px;width: 99%;">
-        <div class="scroll-content" id="scrollContent">
+	style="position: fixed; left: 0; top: 0; width: 100% ;height:100%;z-index: -10;filter:blur(2px)">
+    <div id="bigContainer"style="opacity:1;transition:opacity 0.5s ease-in-out;z-index:100;">
+		<div class="scroll-container" id="scrollContainer"
+		style="position: absolute;top: 80px;width: 99%;">
+        	<div class="scroll-content" id="scrollContent">
 			<!-- 因内容较多，使用js加载 -->
-			<image src="../icon/album/story.png"style=
+				<image src="../icon/album/story.png"style=
 				"position: relative;
 				left: 4px;
 				top: 90px;
@@ -25,15 +28,14 @@
 				display: flex;
 				align-items: center;
 				justify-content: center;">
-        </div>
-    </div>
-
-	<!-- 返回按钮 -->
-	<button id="backbutton" class="custom-button">
-    <img src="../icon/backbutton.png" alt="按钮图标" class="hover-image">
-    <span class="button-text">返回</span>
-	</button>
-
+       	 	</div>
+    	</div>
+		<!-- 返回按钮 -->
+		<button id="backbutton" class="custom-button">
+			<img src="../icon/backbutton.png" alt="按钮图标" class="hover-image">
+			<span class="button-text">返回</span>
+		</button>
+	</div>
 	<!-- 加载js文件 -->
 	<script type="text/javascript" src="../js/page2.js"></script>
 </body>
