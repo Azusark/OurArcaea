@@ -61,85 +61,84 @@ document.addEventListener('DOMContentLoaded', function () {
 
   document.addEventListener('DOMContentLoaded', function () {
     const buttonItems = document.querySelectorAll('.button-item');
-    const body = document.body; // 获取 body 元素，用于设置背景图片
-    const fixedBackground = document.getElementById('fixed-background'); // 获取固定的背景图片
-    let currentAudio = null; // 用于存储当前播放的音频对象
-  
+    const body = document.body;
+    const fixedBackground = document.getElementById('fixed-background');
+    let currentAudio = null;
+    let selectedButton = null; // 新增：跟踪当前选中按钮
+
     buttonItems.forEach(item => {
-      item.addEventListener('click', function () {
-        // 移除所有按钮的选中状态
-        buttonItems.forEach(el => el.classList.remove('selected'));
-  
-        // 为当前点击的按钮添加选中状态
-        this.classList.add('selected');
-  
-        // 获取当前按钮的背景图片路径
-        const bgImage = this.getAttribute('data-bg');
-        console.log(`Loading background image: ${bgImage}`); // 调试路径
-  
-        // 设置 body 的背景图片
-        body.style.backgroundImage = `url(${bgImage})`;
-        body.style.backgroundPosition = 'center 0%'; // 水平居中，垂直方向偏移 40%
-        body.style.backgroundSize = 'cover'; // 保持背景图片比例，同时覆盖整个背景区域
-        body.style.width = '100%';
-        body.style.height = '100%';
-  
-        // 隐藏固定的背景图片
-        fixedBackground.style.display = 'none';
-  
-        // 获取当前按钮的索引
-        const index = this.getAttribute('data-index');
-  
-        // 隐藏所有 songi 元素
-        document.querySelectorAll('[id^="song"]').forEach(el => {
-          el.style.display = 'none';
+        item.addEventListener('click', function () {
+            // 判断是否点击的是已选中的按钮
+            if (this === selectedButton) {
+                // 选中状态下再次点击 - 执行跳转
+                const targetUrl = this.getAttribute('data-url');
+                if (targetUrl) {
+                    if (currentAudio) {
+                        currentAudio.pause();
+                        currentAudio.currentTime = 0;
+                    }
+                    window.location.href = targetUrl;
+                }
+                return; // 直接返回，不执行后续逻辑
+            }
+
+            // 以下是原有第一次点击逻辑
+            // 移除所有选中状态
+            buttonItems.forEach(el => el.classList.remove('selected'));
+            
+            // 设置当前选中按钮
+            selectedButton = this;
+            this.classList.add('selected');
+
+            // 更新背景
+            const bgImage = this.getAttribute('data-bg');
+            body.style.backgroundImage = `url(${bgImage})`;
+            body.style.backgroundPosition = 'center 0%';
+            body.style.backgroundSize = 'cover';
+            body.style.width = '100%';
+            body.style.height = '100%';
+
+            // 隐藏固定背景
+            fixedBackground.style.display = 'none';
+
+            // 显示对应song元素
+            const index = this.getAttribute('data-index');
+            document.querySelectorAll('[id^="song"]').forEach(el => {
+                el.style.display = 'none';
+            });
+            const songElement = document.getElementById(`song${index}`);
+            if (songElement) songElement.style.display = 'block';
+
+            // 处理音乐
+            const audioSrc = this.getAttribute('data-audio');
+            if (currentAudio) {
+                currentAudio.pause();
+                currentAudio.currentTime = 0;
+            }
+            currentAudio = new Audio(audioSrc);
+            currentAudio.loop = true;
+            currentAudio.play();
         });
-  
-        // 显示当前按钮对应的 songi 元素
-        const songElement = document.getElementById(`song${index}`);
-        if (songElement) {
-          songElement.style.display = 'block'; // 或者 'flex'，根据你的布局需求
-        }
-  
-        // 获取当前按钮的音乐文件路径
-        const audioSrc = this.getAttribute('data-audio');
-  
-        // 如果当前有音乐正在播放，停止它
-        if (currentAudio) {
-          currentAudio.pause();
-          currentAudio.currentTime = 0; // 重置播放进度
-        }
-  
-        // 创建新的音频对象并播放
-        currentAudio = new Audio(audioSrc);
-        currentAudio.loop = true; // 设置循环播放
-        currentAudio.play();
-      });
     });
-  
-    // 默认加载景图片
+
+    // 以下初始化逻辑保持不变...
+    // 默认加载第一个按钮的配置
     const defaultBg = '../icon/background/bg1.png';
     body.style.backgroundImage = `url(${defaultBg})`;
-    body.style.backgroundPosition = 'center 0%'; // 水平居中，垂直方向偏移 40%
-    body.style.backgroundSize = 'cover'; // 保持背景图片比例，同时覆盖整个背景区域
+    body.style.backgroundPosition = 'center 0%';
+    body.style.backgroundSize = 'cover';
     body.style.width = '100%';
     body.style.height = '100%';
-  
-    // 默认隐藏固定的背景图片
     fixedBackground.style.display = 'none';
-  
-    // 默认显示第一个 songi 元素
+    
     const firstSongElement = document.getElementById('song1');
-    if (firstSongElement) {
-      firstSongElement.style.display = 'block'; // 或者 'flex'，根据你的布局需求
-    }
-  
-    // 默认播放第一个按钮的音乐
+    if (firstSongElement) firstSongElement.style.display = 'block';
+
     const firstButton = document.querySelector('.button-item');
     if (firstButton) {
-      const firstAudioSrc = firstButton.getAttribute('data-audio');
-      currentAudio = new Audio(firstAudioSrc);
-      currentAudio.loop = true; // 设置循环播放
-      currentAudio.play();
+        
+        currentAudio = new Audio(firstAudioSrc);
+        currentAudio.loop = true;
+        currentAudio.play();
     }
-  });
+});
