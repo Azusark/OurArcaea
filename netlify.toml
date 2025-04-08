@@ -1,0 +1,4 @@
+[[redirects]]
+  from = "/*"
+  to = "/html/iframe.html"
+  status = 200
