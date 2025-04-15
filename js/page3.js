@@ -126,3 +126,101 @@ function fadeVolume(audio, from, to, duration) {
   };
   updateVolume();
 }
+// 预加载所有图片资源
+async function preloadAllImages() {
+  try {
+    // 1. 获取所有需要预加载的图片路径
+    const imageList = await getAllImagePaths();
+    
+    // 2. 显示进度条
+    const progressBar = document.getElementById('progress-bar');
+    const progressText = document.getElementById('progress-text');
+    let loadedCount = 0;
+    
+    // 3. 预加载所有图片
+    const loadPromises = imageList.map(src => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.src = src;
+        img.onload = () => {
+          loadedCount++;
+          const progress = Math.round((loadedCount / imageList.length) * 100);
+          progressBar.style.width = `${progress}%`;
+          progressText.textContent = `${progress}%`;
+          resolve();
+        };
+        img.onerror = () => {
+          console.warn(`Failed to load: ${src}`);
+          loadedCount++;
+          const progress = Math.round((loadedCount / imageList.length) * 100);
+          progressBar.style.width = `${progress}%`;
+          progressText.textContent = `${progress}%`;
+          resolve(); // 即使失败也继续
+        };
+      });
+    });
+    
+    // 4. 等待所有图片加载完成
+    await Promise.all(loadPromises);
+    
+    // 5. 隐藏预加载界面，显示内容
+    document.getElementById('preloader').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+    
+    // 6. 自动播放音乐（如果需要）
+    const music = document.getElementById('background-music');
+    music.volume = 0.3;
+    music.play().catch(e => console.log('自动播放被阻止:', e));
+    
+  } catch (error) {
+    console.error('预加载出错:', error);
+    // 出错时也继续显示内容
+    document.getElementById('preloader').style.display = 'none';
+    document.getElementById('content').style.display = 'block';
+  }
+}
+
+// 获取所有需要预加载的图片路径
+async function getAllImagePaths() {
+  // 这里列出所有需要预加载的图片
+  // 实际项目中可以通过API获取或使用构建工具生成
+  return [
+    // 主界面图片
+    '../icon/long.png',
+    '../icon/arcaea.png',
+    '../icon/shard.png',
+    '../icon/partner/partner1.png',
+    '../icon/partner/partner2.png',
+    '../icon/partner/partner3.png',
+    '../icon/partner/partner4.png',
+    '../icon/partner/partner5.png',
+    '../icon/partner/partner6.png',
+    '../icon/partner/partner7.png',
+    '../icon/album/album1.png',
+    '../icon/album/album2.png',
+    '../icon/album/album3.png',
+    '../icon/album/album4.png',
+    '../icon/album/album5.png',
+    '../icon/album/album6.png',
+    '../icon/album/album7.png',
+    '../icon/album/album8.png',
+    '../icon/album/album9.png',
+    '../icon/album/album10.png',
+    '../icon/album/album11.png',
+    '../icon/album/album12.png',
+    '../icon/album/album13.png',
+    '../icon/album/album14.png',
+    '../icon/album/album15.png',
+    '../icon/album/album16.png',
+    // 其他页面可能用到的图片
+    '../html/index.html', // 预加载下一页HTML
+    '../css/index.css',
+    '../js/index.js',
+    
+    // 添加更多需要预加载的图片路径...
+    // 可以通过脚本自动扫描icon文件夹生成这个列表
+  ];
+}
+
+// 启动预加载
+document.addEventListener('DOMContentLoaded', preloadAllImages);
