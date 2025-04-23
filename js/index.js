@@ -71,27 +71,27 @@ function loadLogin() {
 }
 //点击ESC关闭侧栏
 document.addEventListener('keydown', function(event) {
-    if (event.key == "Escape" && IsCanEscape==true) {
-        IsCanEscape = false;
-        channel3.postMessage({ type: 'LoginImageMove2' });
-        channel4.postMessage({ type: 'AboutImageMove2' });
-        setTimeout(() => {
-            document.getElementById('myLogin').style.display = "none";
-            document.getElementById('myAbout').style.display = "none";
-        }, 495);
-        mask.style.display = 'none';
-    }
+  if (event.key === "Escape" && IsCanEscape) {
+      IsCanEscape = false;
+      channel3.postMessage({ type: 'LoginImageMove2' });
+      channel4.postMessage({ type: 'AboutImageMove2' });
+      setTimeout(() => {
+          document.getElementById('myLogin').style.display = "none";
+          document.getElementById('myAbout').style.display = "none";
+      }, 495);
+      mask.style.display = 'none';
+  }
 });
+
 // 当界面重新获得焦点时，重置 IsCanEscape
-// 还需修改，改为点击注入的界面也能重置
-window.onfocus = function() {
-  if (IsCanEscape == false) {
-    IsCanEscape = true;
-  }
-  else {
-    IsCanEscape = false;
-  }
-};
+window.addEventListener('focus', function() {
+  IsCanEscape = true; // 直接重置为 true，确保 ESC 可以再次触发
+});
+
+// 点击遮罩层（mask）时也重置 IsCanEscape
+mask.addEventListener('click', function() {
+  IsCanEscape = true;
+});
 //开始游戏-进入选关界面
 document.getElementById('myBtn_StartGame').addEventListener('click', function() {
     channel1.postMessage({ type: 'PlayAnimation' });

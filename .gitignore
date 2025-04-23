@@ -2,3 +2,4 @@ node_modules/
 dist/
 .env
 .DS_Store
+vue3-entry-video-related-code/
